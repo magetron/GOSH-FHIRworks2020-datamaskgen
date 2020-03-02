@@ -4,6 +4,3 @@
 [submodule "dependencies/json"]
 	path = dependencies/json
 	url = https://github.com/nlohmann/json
-[submodule "FHIRworks_2020_private"]
-	path = FHIRworks_2020_private
-	url = https://github.com/magetron/FHIRworks_2020_private
