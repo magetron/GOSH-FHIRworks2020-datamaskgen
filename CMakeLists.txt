@@ -7,7 +7,7 @@ set(OPENSSL_LIBRARIES /usr/local/ssl/lib)
 
 add_subdirectory(dependencies)
 
-add_executable(GOSH_FHIRworks2020_datagen main.cpp)
+add_executable(GOSH_FHIRworks2020_datagen main.cc api.cc)
 
 include_directories(${CPR_INCLUDE_DIRS} ${JSON_INCLUDE_DIRS})
 target_link_libraries(GOSH_FHIRworks2020_datagen ${CPR_LIBRARIES})
