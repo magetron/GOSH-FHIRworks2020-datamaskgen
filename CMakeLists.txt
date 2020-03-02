@@ -9,5 +9,5 @@ add_subdirectory(dependencies)
 
 add_executable(GOSH_FHIRworks2020_datagen main.cpp)
 
-include_directories(${CPR_INCLUDE_DIRS})
+include_directories(${CPR_INCLUDE_DIRS} ${JSON_INCLUDE_DIRS})
 target_link_libraries(GOSH_FHIRworks2020_datagen ${CPR_LIBRARIES})

@@ -1,4 +1,5 @@
-set(BUILD_CPR_TESTS OFF CACHE BOOL "Don't build cpr tests")
+set(JSON_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/json/include PARENT_SCOPE)
+
 find_package(CURL)
 if(CURL_FOUND)
     set(USE_SYSTEM_CURL ON CACHE BOOL "Use the system curl for faster builds")
