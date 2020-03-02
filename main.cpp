@@ -1,6 +1,9 @@
 #include <iostream>
+#include <cpr/cpr.h>
 
-int main() {
-    std::cout << "Hello, World!" << std::endl;
-    return 0;
+using namespace std;
+
+int main(int argc, char** argv) {
+    auto response = cpr::Get(cpr::Url{"https://httpbin.org/get"});
+    cout << response.text << endl;
 }
