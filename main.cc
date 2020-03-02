@@ -3,16 +3,23 @@
 //
 
 #include <iostream>
-#include <cpr/cpr.h>
-#include <nlohmann/json.hpp>
 #include "api.cc"
+#include "nlohmann/json.hpp"
+
+static int fast_io = [] () {
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+    cout.tie(nullptr);
+    return 0;
+} ();
 
 using namespace std;
 
 int main(int argc, char** argv) {
-    auto response = cpr::Get(cpr::Url{"https://httpbin.org/get"});
-    auto json = nlohmann::json::parse(response.text);
-    cout << json.dump(4) << endl;
     refresh_patients_json();
+    string patients_json_string = read_patients_json().first;
+    cout << patients_json_string << endl;
+    auto parser = nlohmann::json::parse(patients_json_string);
+    cout << parser.dump(4) << endl;
     return 0;
 }
