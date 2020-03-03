@@ -7,9 +7,15 @@
 
 #include <string>
 #include <ctime>
+#include <set>
 
 #include "name.hh"
 #include "address.hh"
+#include "language.hh"
+#include "telecom.hh"
+#include "identifier.hh"
+
+//TODO: extensions
 
 using namespace std;
 
@@ -20,7 +26,10 @@ public:
     tm birthday;
     Address address;
     string maritial_status;
-
+    set<Language> communication_languages;
+    set<Telecom> telecoms;
+    set<Identifier> identifiers;
+    string uuid;
 
 };
 
