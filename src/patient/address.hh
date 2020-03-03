@@ -6,7 +6,7 @@
 #define GOSH_FHIRWORKS2020_DATAGEN_ADDRESS_HH
 
 #include <string>
-#include <utility>
+#include <optional>
 #include "geolocation.hh"
 
 using namespace std;
@@ -18,6 +18,8 @@ public:
     string state;
     string city;
     Geolocation geolocation;
+
+    address () = default;
 
     address (string ctry, string pc, string s, string c, double la, double lg) : country(std::move(ctry)),
                                                                                  postal_code(std::move(pc)), state(std::move(s)), city(std::move(c)), geolocation(la, lg) { }

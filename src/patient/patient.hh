@@ -25,12 +25,13 @@ public:
     string gender;
     tm birthday;
     address address;
-    string maritial_status;
+    string marital_status;
     set<language> communication_languages;
     set<telecom> telecoms;
     set<identifier> identifiers;
     string uuid;
 
+    patient (string id, string pre, string gn, string fn) : uuid(std::move(id)), name(std::move(pre), std::move(gn), std::move(fn)) { }
 };
 
 

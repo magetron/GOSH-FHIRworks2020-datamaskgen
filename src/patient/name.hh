@@ -18,6 +18,8 @@ public:
     string family_name;
     string prefix;
 
+    name () = default;
+
     name (string pre, string gn, string fn) : prefix(std::move(pre)), given_name(move(gn)), family_name(move(fn)) { }
 
     void add_unofficial_name (const string& pre, const string& gn, const string& fn) {

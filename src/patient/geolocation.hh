@@ -11,6 +11,8 @@ class Geolocation {
 public:
     double latitude, longitude;
 
+    Geolocation () = default;
+
     Geolocation (double la, double lo) : latitude(la), longitude(lo) { }
 
     ~Geolocation() = default;
