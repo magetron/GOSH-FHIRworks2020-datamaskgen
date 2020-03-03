@@ -3,8 +3,14 @@
 //
 
 #include <iostream>
+#include <unordered_set>
 #include "api.cc"
 #include "nlohmann/json.hpp"
+
+using namespace std;
+
+
+using json = nlohmann::json;
 
 static int fast_io = [] () {
     ios_base::sync_with_stdio(false);
@@ -13,13 +19,20 @@ static int fast_io = [] () {
     return 0;
 } ();
 
-using namespace std;
+void parse_raw_patients (string& json_string) {
+    auto json = nlohmann::json::parse(json_string);
+    for (auto it = json.begin(); it != json.end(); it++) {
+        auto entries = (*it)["entry"];
+        for (auto eit = entries.begin(); eit != entries.end(); eit++) {
+            auto resources = (*it)["resource"];
+        }
+    }
+}
+
 
 int main(int argc, char** argv) {
-    refresh_patients_json();
     string patients_json_string = read_patients_json().first;
     cout << patients_json_string << endl;
-    auto parser = nlohmann::json::parse(patients_json_string);
-    cout << parser.dump(4) << endl;
+
     return 0;
 }
