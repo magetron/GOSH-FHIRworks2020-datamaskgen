@@ -10,6 +10,7 @@
 using namespace std;
 
 class telecom {
+public:
     string system;
     string value;
     string use;

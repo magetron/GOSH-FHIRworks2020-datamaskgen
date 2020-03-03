@@ -12,14 +12,14 @@
 
 using namespace std;
 
-class IdentifierType {
+class identifier_type {
 public:
     vector<encoding> encodings;
     string text;
 
-    explicit IdentifierType (string t) : text(std::move(t)) { }
+    explicit identifier_type (string t) : text(std::move(t)) { }
 
-    ~IdentifierType() = default;
+    ~identifier_type() = default;
 };
 
 #endif //GOSH_FHIRWORKS2020_DATAGEN_IDENTIFIER_TYPE_HH

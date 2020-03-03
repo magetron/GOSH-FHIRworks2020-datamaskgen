@@ -13,25 +13,40 @@
 using namespace std;
 
 class identifier {
+public:
+
+    bool operator == (const identifier& i) const {
+        return system == i.system && value == i.value;
+    }
+
     string system;
     string value;
-    optional<IdentifierType> type;
+    optional<identifier_type> type;
 
     identifier (string sys, string val) : system(std::move(sys)), value(std::move(val)) { }
 
     void init_type(const string& text) {
         if (!type.has_value()) {
-            type = IdentifierType(text);
+            type = identifier_type(text);
         } else {
             type -> text = text;
         }
     }
 
     void add_type_encoding (const string& system, const string& code, const string& display) {
-        type->encodings.emplace_back(sys, code, display);
+        type->encodings.emplace_back(system, code, display);
     }
 
 };
+
+namespace std {
+    template<>
+    struct hash<identifier> {
+        size_t operator() (const identifier& i) const {
+            return std::hash<string>()(i.system) ^ std::hash<string>()(i.value);
+        }
+    };
+}
 
 
 #endif //GOSH_FHIRWORKS2020_DATAGEN_IDENTIFIER_HH

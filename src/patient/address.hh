@@ -17,12 +17,23 @@ public:
     string postal_code;
     string state;
     string city;
-    Geolocation geolocation;
+    vector<string> lines;
+    optional<geolocation> geolocation;
 
     address () = default;
 
-    address (string ctry, string pc, string s, string c, double la, double lg) : country(std::move(ctry)),
-                                                                                 postal_code(std::move(pc)), state(std::move(s)), city(std::move(c)), geolocation(la, lg) { }
+    address (string ctry, string pc, string s, string c) : country(std::move(ctry)),
+                                                                                 postal_code(std::move(pc)),
+                                                                                 state(std::move(s)),
+                                                                                 city(std::move(c)) { }
+
+    void add_line (string line) {
+        lines.emplace_back(line);
+    }
+
+    void add_geolocation (double la, double lo) {
+        geolocation.emplace(la, lo);
+    }
 
     ~address() = default;
 };

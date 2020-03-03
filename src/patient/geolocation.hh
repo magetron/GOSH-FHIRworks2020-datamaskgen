@@ -7,15 +7,15 @@
 
 #include <string>
 
-class Geolocation {
+class geolocation {
 public:
     double latitude, longitude;
 
-    Geolocation () = default;
+    geolocation () = default;
 
-    Geolocation (double la, double lo) : latitude(la), longitude(lo) { }
+    geolocation (double la, double lo) : latitude(la), longitude(lo) { }
 
-    ~Geolocation() = default;
+    ~geolocation() = default;
 };
 
 #endif //GOSH_FHIRWORKS2020_DATAGEN_GEOLOCATION_HH

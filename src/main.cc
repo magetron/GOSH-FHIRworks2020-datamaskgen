@@ -4,12 +4,12 @@
 
 #include <iostream>
 #include <unordered_set>
+#include <nlohmann/json.hpp>
+
 #include "api.cc"
-#include "nlohmann/json.hpp"
+#include "db.hh"
 
 using namespace std;
-
-
 using json = nlohmann::json;
 
 static int fast_io = [] () {
@@ -19,24 +19,17 @@ static int fast_io = [] () {
     return 0;
 } ();
 
-void parse_raw_patients (string& json_string) {
-    auto json = nlohmann::json::parse(json_string);
-    for (auto it = json.begin(); it != json.end(); it++) {
-        auto entries = (*it)["entry"];
-        for (auto eit = entries.begin(); eit != entries.end(); eit++) {
-            auto resources = (*it)["resource"];
-        }
-    }
-}
-
+class db db;
 
 int main(int argc, char** argv) {
 
-    refresh_patients_json();
-    string patients_json_string = read_patients_json().first;
-    cout << patients_json_string << endl;
-    auto data = json::parse(patients_json_string);
-    cout << data.dump(4) << endl;
+    //refresh_patients_json();
+    string patients_json_string = api::read_patients_json().first;
+    //cout << patients_json_string << endl;
+    //auto data = json::parse(patients_json_string);
+    //cout << data.dump(4) << endl;
+
+    db.patients = api::parse_raw_patients(patients_json_string);
 
     return 0;
 }
