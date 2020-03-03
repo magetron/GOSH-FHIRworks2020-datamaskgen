@@ -9,15 +9,15 @@
 
 using namespace std;
 
-class Encoding {
+class encoding {
 public:
     string system;
     string code;
     string display;
 
-    Encoding (string sys, string c, string d) : system(std::move(sys)), code(std::move(c)), display(std::move(d)) { }
+    encoding (string sys, string c, string d) : system(std::move(sys)), code(std::move(c)), display(std::move(d)) { }
 
-    ~Encoding() = default;
+    ~encoding() = default;
 
 };
 

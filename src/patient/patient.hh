@@ -19,16 +19,16 @@
 
 using namespace std;
 
-class Patient {
+class patient {
 public:
-    Name name;
+    name name;
     string gender;
     tm birthday;
-    Address address;
+    address address;
     string maritial_status;
-    set<Language> communication_languages;
-    set<Telecom> telecoms;
-    set<Identifier> identifiers;
+    set<language> communication_languages;
+    set<telecom> telecoms;
+    set<identifier> identifiers;
     string uuid;
 
 };

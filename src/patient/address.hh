@@ -11,7 +11,7 @@
 
 using namespace std;
 
-class Address {
+class address {
 public:
     string country;
     string postal_code;
@@ -19,10 +19,10 @@ public:
     string city;
     Geolocation geolocation;
 
-    Address (string ctry, string pc,  string s, string c, double la, double lg) : country(std::move(ctry)),
-        postal_code(std::move(pc)), state(std::move(s)), city(std::move(c)), geolocation(la, lg) { }
+    address (string ctry, string pc, string s, string c, double la, double lg) : country(std::move(ctry)),
+                                                                                 postal_code(std::move(pc)), state(std::move(s)), city(std::move(c)), geolocation(la, lg) { }
 
-    ~Address() = default;
+    ~address() = default;
 };
 
 #endif //GOSH_FHIRWORKS2020_DATAGEN_ADDRESS_HH

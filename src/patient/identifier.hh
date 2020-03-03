@@ -12,12 +12,12 @@
 
 using namespace std;
 
-class Identifier {
+class identifier {
     string system;
     string value;
     optional<IdentifierType> type;
 
-    Identifier (string sys, string val) : system(std::move(sys)), value(std::move(val)) { }
+    identifier (string sys, string val) : system(std::move(sys)), value(std::move(val)) { }
 
     void init_type(const string& text) {
         if (!type.has_value()) {

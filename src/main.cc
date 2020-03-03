@@ -31,8 +31,12 @@ void parse_raw_patients (string& json_string) {
 
 
 int main(int argc, char** argv) {
+
+    refresh_patients_json();
     string patients_json_string = read_patients_json().first;
     cout << patients_json_string << endl;
+    auto data = json::parse(patients_json_string);
+    cout << data.dump(4) << endl;
 
     return 0;
 }

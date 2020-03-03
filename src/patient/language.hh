@@ -9,18 +9,18 @@
 
 #include "encoding.hh"
 
-class Language {
+class language {
 public:
-    vector<Encoding> encodings;
+    vector<encoding> encodings;
     string text;
 
-    Language (string t) : text(std::move(t)) { }
+    explicit language (string t) : text(std::move(t)) { }
 
     void add_encoding (const string& system, const string& code, const string& display) {
         encodings.emplace_back(system, code, display);
     }
 
-    ~Language() = default;
+    ~language() = default;
 
 };
 

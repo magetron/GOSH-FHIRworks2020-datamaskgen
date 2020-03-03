@@ -14,7 +14,7 @@ using namespace std;
 
 class IdentifierType {
 public:
-    vector<Encoding> encodings;
+    vector<encoding> encodings;
     string text;
 
     explicit IdentifierType (string t) : text(std::move(t)) { }

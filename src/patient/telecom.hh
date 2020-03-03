@@ -9,15 +9,15 @@
 
 using namespace std;
 
-class Telecom {
+class telecom {
     string system;
     string value;
     string use;
 
-    Telecom (string sys, string val, string u) : system(std::move(sys)), value(std::move(val)),
-        use(std::move(u)) { }
+    telecom (string sys, string val, string u) : system(std::move(sys)), value(std::move(val)),
+                                                 use(std::move(u)) { }
 
-    ~Telecom() = default;
+    ~telecom() = default;
 };
 
 #endif //GOSH_FHIRWORKS2020_DATAGEN_TELECOM_HH
