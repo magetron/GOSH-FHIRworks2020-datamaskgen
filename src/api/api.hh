@@ -9,8 +9,7 @@
 #include <unordered_set>
 #include <nlohmann/json.hpp>
 
-#include "api.hh"
-#include "db.hh"
+#include "api_config.hh"
 
 using namespace std;
 using json = nlohmann::json;

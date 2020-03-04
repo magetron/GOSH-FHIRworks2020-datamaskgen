@@ -6,8 +6,8 @@
 #include <unordered_set>
 #include <nlohmann/json.hpp>
 
-#include "api.cc"
-#include "db.hh"
+#include "masker.hh"
+#include "api/api.hh"
 
 using namespace std;
 using json = nlohmann::json;
@@ -19,8 +19,6 @@ static int fast_io = [] () {
     return 0;
 } ();
 
-class db db;
-
 int main(int argc, char** argv) {
 
     //refresh_patients_json();
@@ -29,7 +27,9 @@ int main(int argc, char** argv) {
     //auto data = json::parse(patients_json_string);
     //cout << data.dump(4) << endl;
 
-    db.patients = api::parse_raw_patients(patients_json_string);
+    auto patients = api::parse_raw_patients(patients_json_string);
+
+    masker m(patients);
 
     return 0;
 }
