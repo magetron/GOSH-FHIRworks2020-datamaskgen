@@ -15,6 +15,7 @@
 #include "telecom.hh"
 #include "identifier.hh"
 #include "gender.hh"
+#include "marital_status.hh"
 
 //TODO: extensions
 
@@ -31,7 +32,7 @@ public:
     gender gender;
     tm birthday;
     address address;
-    string marital_status;
+    marital_status marital_status;
     vector<language> communication_languages;
     vector<telecom> telecoms;
     vector<identifier> identifiers;
