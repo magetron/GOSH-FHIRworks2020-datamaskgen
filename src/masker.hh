@@ -15,11 +15,13 @@ using namespace std;
 
 class masker {
 public:
-    unordered_set<patient> original_patients;
+    vector<patient> original_patients;
     vector<name> name;
 
-    explicit masker (unordered_set<patient>& p) : original_patients(std::move(p)) {
-
+    explicit masker (vector<patient>& p) : original_patients(std::move(p)) {
+        for (auto patient : original_patients) {
+            cout << patient.name.given_name << endl;
+        }
     }
 
 

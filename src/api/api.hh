@@ -10,6 +10,7 @@
 #include <nlohmann/json.hpp>
 
 #include "api_config.hh"
+#include "../patient/patient.hh"
 
 using namespace std;
 using json = nlohmann::json;
@@ -42,8 +43,8 @@ public:
         return {patients_json_stream.str(), true};
     }
 
-    static unordered_set<patient> parse_raw_patients(string &json_string) {
-        unordered_set<patient> patients;
+    static vector<patient> parse_raw_patients(string &json_string) {
+        vector<patient> patients;
         auto json = json::parse(json_string);
         for (auto & it : json) {
             auto entries = it["entry"];
@@ -71,7 +72,7 @@ public:
                 for (const auto& nit : name_json) {
                     auto name_entry_json = nit;
                     if (name_entry_json["use"] == "official") {
-                        if (name_entry_json.contains("prefix")) pre = name_entry_json["prefix"][0],
+                        if (name_entry_json.contains("prefix")) pre = name_entry_json["prefix"][0];
                         gn = name_entry_json["given"][0],
                         fn = name_entry_json["family"];
                     }
@@ -149,7 +150,7 @@ public:
                     }
                     new_patient.communication_languages.emplace_back(new_language);
                 }
-                patients.emplace(new_patient);
+                patients.emplace_back(new_patient);
             }
         }
         return patients;
