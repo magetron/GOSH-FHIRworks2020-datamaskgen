@@ -2,8 +2,8 @@
 // Created by Patrick Wu on 03/03/2020.
 //
 
-#ifndef GOSH_FHIRWORKS2020_DATAGEN_ADDRESS_HH
-#define GOSH_FHIRWORKS2020_DATAGEN_ADDRESS_HH
+#ifndef GOSH_FHIRWORKS2020_DATAMASKER_ADDRESS_HH
+#define GOSH_FHIRWORKS2020_DATAMASKER_ADDRESS_HH
 
 #include <string>
 #include <optional>
@@ -38,4 +38,4 @@ public:
     ~address() = default;
 };
 
-#endif //GOSH_FHIRWORKS2020_DATAGEN_ADDRESS_HH
+#endif //GOSH_FHIRWORKS2020_DATAMASKER_ADDRESS_HH

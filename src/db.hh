@@ -2,8 +2,8 @@
 // Created by Patrick Wu on 03/03/2020.
 //
 
-#ifndef GOSH_FHIRWORKS2020_DATAGEN_DB_HH
-#define GOSH_FHIRWORKS2020_DATAGEN_DB_HH
+#ifndef GOSH_FHIRWORKS2020_DATAMASKER_DB_HH
+#define GOSH_FHIRWORKS2020_DATAMASKER_DB_HH
 
 #include <unordered_set>
 #include "patient/patient.hh"
@@ -15,4 +15,4 @@ public:
     unordered_set<patient> patients;
 };
 
-#endif //GOSH_FHIRWORKS2020_DATAGEN_DB_HH
+#endif //GOSH_FHIRWORKS2020_DATAMASKER_DB_HH
