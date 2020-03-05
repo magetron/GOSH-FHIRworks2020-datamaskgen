@@ -11,6 +11,11 @@
 
 class language {
 public:
+
+    bool operator==(const language& l1) const {
+        return text == l1.text;
+    }
+
     vector<encoding> encodings;
     string text;
 
@@ -23,5 +28,15 @@ public:
     ~language() = default;
 
 };
+
+namespace std {
+    template<>
+    struct hash<language> {
+        size_t operator() (const language& l) const {
+            return std::hash<string>()(l.text);
+        }
+    };
+}
+
 
 #endif //GOSH_FHIRWORKS2020_DATAMASKER_LANGUAGE_HH

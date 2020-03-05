@@ -14,18 +14,32 @@ using namespace std;
 
 class marital_status {
 public:
+
+    bool operator==(const marital_status &m1) const {
+        return text == m1.text;
+    }
+
     vector<encoding> encodings;
     string text;
 
-    marital_status () = default;
+    marital_status() = default;
 
-    explicit marital_status (string t) : text(std::move(t)) { }
+    explicit marital_status(string t) : text(std::move(t)) {}
 
-    void add_encoding (const string& system, const string& code, const string& display) {
+    void add_encoding(const string &system, const string &code, const string &display) {
         encodings.emplace_back(system, code, display);
     }
 
     ~marital_status() = default;
 };
+
+namespace std {
+    template<>
+    struct hash<marital_status> {
+        size_t operator() (const marital_status& m) const {
+            return std::hash<string>()(m.text);
+        }
+    };
+}
 
 #endif //GOSH_FHIRWORKS2020_DATAMASKER_MARITAL_STATUS_HH

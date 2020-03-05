@@ -13,6 +13,8 @@
 #include "../patient/patient.hh"
 #include "name_generator.hh"
 #include "address_generator.hh"
+#include "marital_status_generator.hh"
+#include "language_generator.hh"
 
 using namespace std;
 
@@ -22,10 +24,14 @@ public:
 
     class name_generator name_generator;
     class address_generator address_generator;
+    class marital_status_generator marital_status_generator;
+    class language_generator language_generator;
 
     explicit generator (vector<patient>& p) : original_patients(std::move(p)),
                                               name_generator(original_patients),
-                                              address_generator(original_patients) { }
+                                              address_generator(original_patients),
+                                              marital_status_generator(original_patients),
+                                              language_generator(original_patients) { }
 
     static string get_uuid() {
         static random_device dev;
@@ -44,9 +50,6 @@ public:
         }
         return res;
     }
-
-
-
 
 };
 
