@@ -1,10 +1,10 @@
 language: cpp
 compiler: clang
-
 install:
   - git submodule update --init --recursive
-script:
+before_script:
   - mkdir build
   - cd build
+script:
   - cmake ..
   - make
