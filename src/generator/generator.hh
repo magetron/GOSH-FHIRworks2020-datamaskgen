@@ -10,7 +10,7 @@
 #include <vector>
 #include <string>
 
-#include "patient/patient.hh"
+#include "../patient/patient.hh"
 #include "name_generator.hh"
 #include "address_generator.hh"
 

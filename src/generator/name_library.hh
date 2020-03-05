@@ -7,7 +7,7 @@
 
 #include <vector>
 
-#include "patient/patient.hh"
+#include "../patient/patient.hh"
 
 using namespace std;
 

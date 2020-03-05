@@ -6,7 +6,7 @@
 #define GOSH_FHIRWORKS2020_DATAMASKER_NAME_GENERATOR_HH
 
 #include "name_library.hh"
-#include "patient/patient.hh"
+#include "../patient/patient.hh"
 
 using namespace std;
 

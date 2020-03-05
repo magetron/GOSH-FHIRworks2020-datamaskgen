@@ -6,7 +6,7 @@
 #include <unordered_set>
 #include <nlohmann/json.hpp>
 
-#include "generator.hh"
+#include "generator/generator.hh"
 #include "api/api.hh"
 
 using namespace std;
