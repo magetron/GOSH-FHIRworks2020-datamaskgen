@@ -2,12 +2,14 @@ language: cpp
 matrix:
   include:
     - os: linux
-      compiler: gcc
-      env: COMPILER=g++-9
+      compiler: clang
+      env:
+        - COMPILER=clang++-7
+        - CXXFLAGS=-std=c++1z
       addons:
         apt:
-          sources: ['ubuntu-toolchain-r-test']
-          packages: ['g++-9']
+          sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-trusty-7']
+          packages: ['g++-6', 'clang-7']
 
 install:
   - git submodule update --init --recursive
