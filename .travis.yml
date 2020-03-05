@@ -18,7 +18,7 @@ script:
   - if [[ "${COMPILER}" != "" ]]; then export CXX=${COMPILER}; fi
   - uname -a
   - $CXX --version
-  - mkdir build
+  - mkdir -p build
   - cd build
   - cmake ..
   - make
