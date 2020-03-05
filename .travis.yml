@@ -16,9 +16,8 @@ matrix:
 
 install:
   - git submodule update --init --recursive
-before_script:
+script:
   - mkdir build
   - cd build
-script:
   - cmake ..
   - make
