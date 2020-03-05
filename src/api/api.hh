@@ -19,7 +19,7 @@ using json = nlohmann::json;
 class api {
 public:
     static pair<string, bool> refresh_patients_json() {
-        auto request = cpr::Get(cpr::Url{"https://localhost:5001/api/Patient"}, cpr::VerifySsl(false));
+        auto request = cpr::Get(cpr::Url{PATIENTS_JSON_API_ENDPOINT}, cpr::VerifySsl(false));
         if (request.status_code != 200) return {"", false};
         ofstream patients_json;
         patients_json.open(CACHE_FOLDER + "patients.json");
