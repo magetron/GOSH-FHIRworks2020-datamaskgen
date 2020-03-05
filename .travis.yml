@@ -1,7 +1,5 @@
 language: cpp
-compiler: clang
 env:
-  - COMPILER=clang++-7
   - CXXFLAGS=-std=c++17
 install:
   - git submodule update --init --recursive
