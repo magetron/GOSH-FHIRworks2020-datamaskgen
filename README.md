@@ -1,4 +1,4 @@
-# GOSH FHIRworks 2020 Data Masker - Generator
+# GOSH FHIRworks 2020 Data Masker - Generator [![Build Status](https://travis-ci.com/magetron/GOSH-FHIRworks2020-datamasker.svg?token=1egyyzxUBmAzQpnmo8g4&branch=master)](https://travis-ci.com/magetron/GOSH-FHIRworks2020-datamasker)
 
 ## Introduction
 
