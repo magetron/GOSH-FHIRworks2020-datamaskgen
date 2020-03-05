@@ -9,7 +9,7 @@ matrix:
       addons:
         apt:
           sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-trusty-7']
-          packages: ['g++-6', 'clang-7']
+          packages: ['g++-9', 'clang-7']
 
 install:
   - git submodule update --init --recursive
