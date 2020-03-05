@@ -17,6 +17,7 @@
 #include "language_generator.hh"
 #include "telecom_generator.hh"
 #include "identifier_generator.hh"
+#include "multiple_birth_generator.hh"
 
 using namespace std;
 
