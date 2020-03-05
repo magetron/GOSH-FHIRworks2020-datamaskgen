@@ -1,8 +1,9 @@
 //
 // Created by Patrick Wu on 02/03/2020.
 //
-#ifndef GOSH_FHIRWORKS2020_DATAMASKER_API_CC
-#define GOSH_FHIRWORKS2020_DATAMASKER_API_CC
+#ifndef GOSH_FHIRWORKS2020_DATAMASKER_API_HH
+#define GOSH_FHIRWORKS2020_DATAMASKER_API_HH
+
 #include <cpr/cpr.h>
 #include <iostream>
 #include <fstream>
@@ -43,7 +44,7 @@ public:
         return {patients_json_stream.str(), true};
     }
 
-    static vector<patient> parse_raw_patients(string &json_string) {
+    static vector<patient> parse_raw_patients(string& json_string) {
         vector<patient> patients;
         auto json = json::parse(json_string);
         for (auto & it : json) {
