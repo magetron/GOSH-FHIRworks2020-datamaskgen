@@ -25,7 +25,6 @@ public:
                 multiple_birth_lib[patient.multiple_birth_count]++;
             else multiple_birth_lib.insert({patient.multiple_birth_count, 1});
         }
-        cout << multiple_birth_lib.size() << endl;
     }
 
 };
