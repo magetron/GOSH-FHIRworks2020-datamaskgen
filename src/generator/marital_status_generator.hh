@@ -14,7 +14,7 @@ using namespace std;
 
 class marital_status_generator {
 public:
-    vector<patient> patients;
+    vector<patient>& patients;
     unordered_map<marital_status, int> marital_lib;
 
     explicit marital_status_generator (vector<patient>& p) : patients(p) {

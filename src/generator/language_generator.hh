@@ -5,6 +5,7 @@
 #ifndef GOSH_FHIRWORKS2020_DATAMASKER_LANGUAGE_GENERATOR_HH
 #define GOSH_FHIRWORKS2020_DATAMASKER_LANGUAGE_GENERATOR_HH
 
+#include <vector>
 #include <iostream>
 #include <unordered_map>
 
@@ -14,7 +15,7 @@ using namespace std;
 
 class language_generator {
 public:
-    vector<patient> patients;
+    vector<patient>& patients;
     unordered_map<language, int> language_lib;
     unordered_map<size_t, int> language_count_lib;
 
