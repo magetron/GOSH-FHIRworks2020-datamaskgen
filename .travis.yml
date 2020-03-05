@@ -12,6 +12,10 @@ matrix:
 install:
   - git submodule update --init --recursive
 script:
+  # show OS/compiler version
+  - if [[ "${COMPILER}" != "" ]]; then export CXX=${COMPILER}; fi
+  - uname -a
+  - $CXX --version
   - mkdir build
   - cd build
   - cmake ..
