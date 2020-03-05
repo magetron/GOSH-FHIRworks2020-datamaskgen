@@ -6,7 +6,7 @@
 #include <unordered_set>
 #include <nlohmann/json.hpp>
 
-#include "masker.hh"
+#include "generator.hh"
 #include "api/api.hh"
 
 using namespace std;
@@ -29,7 +29,7 @@ int main(int argc, char** argv) {
 
     auto patients = api::parse_raw_patients(patients_json_string);
 
-    masker m(patients);
+    generator g(patients);
 
     return 0;
 }

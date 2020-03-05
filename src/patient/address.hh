@@ -23,9 +23,9 @@ public:
     address () = default;
 
     address (string ctry, string pc, string s, string c) : country(std::move(ctry)),
-                                                                                 postal_code(std::move(pc)),
-                                                                                 state(std::move(s)),
-                                                                                 city(std::move(c)) { }
+                                                             postal_code(std::move(pc)),
+                                                             state(std::move(s)),
+                                                             city(std::move(c)) { }
 
     void add_line (string line) {
         lines.emplace_back(line);

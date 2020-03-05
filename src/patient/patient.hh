@@ -31,7 +31,7 @@ public:
     name name;
     gender gender;
     tm birthday;
-    address address;
+    vector<address> addresses;
     marital_status marital_status;
     vector<language> communication_languages;
     vector<telecom> telecoms;

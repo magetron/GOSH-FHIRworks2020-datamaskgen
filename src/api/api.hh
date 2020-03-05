@@ -124,6 +124,7 @@ public:
                     }
                     auto lines = address["line"];
                     for (const auto& line : lines) new_address.add_line(line);
+                    new_patient.addresses.emplace_back(new_address);
                 }
                 string m_text = marital_status_json["text"];
                 marital_status m_status(m_text);
