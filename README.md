@@ -1,4 +1,4 @@
-# GOSH FHIRworks 2020 Data Masker (Generator)
+# GOSH FHIRworks 2020 Data Masker - Generator
 
 ## Introduction
 
