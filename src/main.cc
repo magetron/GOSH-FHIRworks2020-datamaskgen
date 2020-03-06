@@ -30,7 +30,10 @@ int main(int argc, char** argv) {
     auto patients = api::parse_raw_patients(patients_json_string);
 
     generator g(patients);
-    for (int i = 0; i < 1000; i++) g.generate_patient();
+    for (int i = 0; i < 1000; i++) {
+        auto p = g.generate_patient();
+        cout << p.name << " " << p.marital_status << " " << p.multiple_birth << " " << p.multiple_birth_count << endl;
+    }
 
     return 0;
 }

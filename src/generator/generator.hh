@@ -79,7 +79,8 @@ public:
         auto m_birth_pair = multiple_birth_generator.generate();
         bool multiple_birth = m_birth_pair.first;
         int multiple_birth_count = m_birth_pair.second;
-        return original_patients[0];
+        return patient(name, gender, birthday, {address}, m_status, languages, telecoms,
+                identifiers, uuid, multiple_birth, multiple_birth_count);
     }
 
 };
