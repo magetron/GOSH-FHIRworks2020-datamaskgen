@@ -30,6 +30,7 @@ int main(int argc, char** argv) {
     auto patients = api::parse_raw_patients(patients_json_string);
 
     generator g(patients);
+    for (int i = 0; i < 1000; i++) g.generate_patient();
 
     return 0;
 }

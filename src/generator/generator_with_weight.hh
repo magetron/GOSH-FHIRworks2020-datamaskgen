@@ -14,6 +14,7 @@ using namespace std;
 template<class T>
 class generator_with_weight {
 public:
+    bool activate;
     vector<pair<const T&, int>> weights;
     vector<int> ps;
     uniform_int_distribution<int> dist;
@@ -21,6 +22,10 @@ public:
     generator_with_weight () = default;
 
     explicit generator_with_weight (unordered_map<T, int>& i_map) {
+        if (i_map.size() == 0) {
+            activate = false;
+            return;
+        } else activate = true;
         for (const auto& p : i_map) weights.push_back({p.first, p.second});
         ps = vector<int>(weights.size());
         int s = 0;
@@ -32,6 +37,7 @@ public:
     }
 
     T generate () {
+        if (!activate) return T();
         static random_device dev;
         static mt19937 rng(dev());
 

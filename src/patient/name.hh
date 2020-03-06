@@ -26,6 +26,11 @@ public:
         unofficial_names.emplace_back(pre, gn, fn);
     }
 
+    friend ostream& operator << (ostream& os, const name& n) {
+        os << n.prefix << " " << n.given_name << " " << n.family_name;
+        return os;
+    }
+
     ~name () = default;
 };
 

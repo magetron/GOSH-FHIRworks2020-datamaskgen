@@ -35,6 +35,15 @@ public:
         geolocation.emplace(la, lo);
     }
 
+    friend ostream& operator << (ostream& os, const address& a) {
+        for (auto line : a.lines) os << line << endl;
+        os << a.city << " " << a.state << " " << a.country << endl;
+        os << a.postal_code << endl;
+        if (a.geolocation.has_value())
+            os << a.geolocation -> latitude << " " << a.geolocation->longitude << endl;
+        return os;
+    }
+
     ~address() = default;
 };
 

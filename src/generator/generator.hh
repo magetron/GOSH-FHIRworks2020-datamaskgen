@@ -66,8 +66,9 @@ public:
     patient generate_patient () {
         string uuid = generate_uuid();
         gender gender = gender_generator.generate();
-
-
+        name name = name_generator.generate(gender);
+        address address = address_generator.generate();
+        cout << uuid << " " << gender << " " << name << " " << address << endl;
         return original_patients[0];
     }
 
