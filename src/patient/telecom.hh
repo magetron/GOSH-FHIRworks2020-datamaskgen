@@ -18,6 +18,11 @@ public:
     telecom (string sys, string val, string u) : system(std::move(sys)), value(std::move(val)),
                                                  use(std::move(u)) { }
 
+    friend ostream& operator << (ostream& os, const telecom& t) {
+        os << t.system << " " << t.value << " " << t.use;
+        return os;
+    }
+
     ~telecom() = default;
 };
 

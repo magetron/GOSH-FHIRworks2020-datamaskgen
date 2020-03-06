@@ -70,6 +70,7 @@ public:
         address address = address_generator.generate();
         marital_status m_status = marital_status_generator.generate();
         vector<language> languages = language_generator.generate();
+        vector<telecom> telecoms = telecom_generator.generate();
 
         return original_patients[0];
     }

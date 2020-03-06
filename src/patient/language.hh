@@ -19,10 +19,17 @@ public:
     vector<encoding> encodings;
     string text;
 
+    language () = default;
+
     explicit language (string t) : text(std::move(t)) { }
 
     void add_encoding (const string& system, const string& code, const string& display) {
         encodings.emplace_back(system, code, display);
+    }
+
+    friend ostream& operator << (ostream& os, const language& l) {
+        os << l.text;
+        return os;
     }
 
     ~language() = default;
