@@ -22,7 +22,6 @@ add_executable(GOSH_FHIRworks2020_datamasker src/main.cc src/api/api.hh src/api/
         src/generator/generator_random.hh src/generator/birthday_generator.hh)
 target_link_libraries(GOSH_FHIRworks2020_datamasker ${CPR_LIBRARIES})
 
-
-add_executable(GOSH_FHIRworks2020_datamasker_test test/test_main.cc test/generator/test_generator.cc)
+add_executable(GOSH_FHIRworks2020_datamasker_test test/test_api.cc test/test_generator.cc test/test_main.cc)
 target_link_libraries(GOSH_FHIRworks2020_datamasker_test Catch2::Catch2 ${CPR_LIBRARIES})
 
