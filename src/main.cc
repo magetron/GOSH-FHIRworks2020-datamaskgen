@@ -30,13 +30,6 @@ int main(int argc, char** argv) {
     auto patients = api::parse_raw_patients(patients_json_string);
 
     generator g(patients);
-    for (auto gg : g.gender_generator.gender_lib) cout << gg.first << " " << gg.second << endl;
-    int a_count = 0, b_count = 0;
-    for (int i = 0; i < 100000; i++) {
-        int k = (int)g.generate_patient();
-        if (k == 0) a_count ++; else b_count++;
-    }
-    cout << a_count << " " << b_count << endl;
 
     return 0;
 }

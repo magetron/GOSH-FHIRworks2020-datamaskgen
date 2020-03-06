@@ -67,9 +67,9 @@ public:
         string uuid = generate_uuid();
         gender gender = gender_generator.generate();
 
+
         return original_patients[0];
     }
-
 
 };
 
