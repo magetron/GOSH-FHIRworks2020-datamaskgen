@@ -8,7 +8,9 @@
 #include <vector>
 #include <unordered_map>
 #include <iostream>
+
 #include "../patient/patient.hh"
+#include "generator_with_weight.hh"
 
 using namespace std;
 
@@ -16,6 +18,8 @@ class marital_status_generator {
 public:
     vector<patient>& patients;
     unordered_map<marital_status, int> marital_lib;
+    generator_with_weight<marital_status> marital_gen;
+
 
     explicit marital_status_generator (vector<patient>& p) : patients(p) {
         for (const auto& patient : patients)
@@ -24,6 +28,11 @@ public:
             } else {
                 marital_lib.insert({patient.marital_status , 1});
             }
+        marital_gen = generator_with_weight<marital_status>(marital_lib);
+    }
+
+    marital_status generate () {
+        return marital_gen.generate();
     }
 
 };

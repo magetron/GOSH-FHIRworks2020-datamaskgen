@@ -30,6 +30,11 @@ public:
         encodings.emplace_back(system, code, display);
     }
 
+    friend ostream& operator << (ostream& os, const marital_status& m) {
+        os << m.text;
+        return os;
+    }
+
     ~marital_status() = default;
 };
 

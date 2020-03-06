@@ -68,7 +68,9 @@ public:
         gender gender = gender_generator.generate();
         name name = name_generator.generate(gender);
         address address = address_generator.generate();
-        cout << uuid << " " << gender << " " << name << " " << address << endl;
+        marital_status m_status = marital_status_generator.generate();
+        vector<language> languages = language_generator.generate();
+
         return original_patients[0];
     }
 

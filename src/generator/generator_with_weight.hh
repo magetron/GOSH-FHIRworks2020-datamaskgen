@@ -14,7 +14,7 @@ using namespace std;
 template<class T>
 class generator_with_weight {
 public:
-    bool activate;
+    bool activate = true;
     vector<pair<const T&, int>> weights;
     vector<int> ps;
     uniform_int_distribution<int> dist;
@@ -25,7 +25,7 @@ public:
         if (i_map.size() == 0) {
             activate = false;
             return;
-        } else activate = true;
+        }
         for (const auto& p : i_map) weights.push_back({p.first, p.second});
         ps = vector<int>(weights.size());
         int s = 0;
