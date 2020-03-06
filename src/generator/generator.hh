@@ -13,6 +13,7 @@
 #include "../patient/patient.hh"
 #include "name_generator.hh"
 #include "gender_generator.hh"
+#include "birthday_generator.hh"
 #include "address_generator.hh"
 #include "marital_status_generator.hh"
 #include "language_generator.hh"
@@ -46,6 +47,7 @@ public:
 
     class name_generator name_generator;
     class gender_generator gender_generator;
+    class birthday_generator birthday_generator;
     class address_generator address_generator;
     class marital_status_generator marital_status_generator;
     class language_generator language_generator;
@@ -56,6 +58,7 @@ public:
     explicit generator (vector<patient>& p) : original_patients(std::move(p)),
                                               name_generator(original_patients),
                                               gender_generator(original_patients),
+                                              birthday_generator(original_patients),
                                               address_generator(original_patients),
                                               marital_status_generator(original_patients),
                                               language_generator(original_patients),
@@ -67,11 +70,15 @@ public:
         string uuid = generate_uuid();
         gender gender = gender_generator.generate();
         name name = name_generator.generate(gender);
+        tm birthday = birthday_generator.generate();
         address address = address_generator.generate();
         marital_status m_status = marital_status_generator.generate();
         vector<language> languages = language_generator.generate();
         vector<telecom> telecoms = telecom_generator.generate();
-
+        vector<identifier> identifiers = identifier_generator.generate();
+        auto m_birth_pair = multiple_birth_generator.generate();
+        bool multiple_birth = m_birth_pair.first;
+        int multiple_birth_count = m_birth_pair.second;
         return original_patients[0];
     }
 

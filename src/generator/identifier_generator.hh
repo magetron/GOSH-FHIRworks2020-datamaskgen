@@ -10,6 +10,7 @@
 #include <unordered_map>
 
 #include "../patient/patient.hh"
+#include "generator_random.hh"
 
 using namespace std;
 
@@ -20,6 +21,11 @@ public:
 
     explicit identifier_generator (vector<patient>& p) : patients(p) {
         for (const auto& patient : patients) identifier_lib.push_back(patient.identifiers);
+    }
+
+    vector<identifier> generate () {
+        random_selector<> selector;
+        return selector(identifier_lib);
     }
 
 };
