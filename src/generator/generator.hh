@@ -12,6 +12,7 @@
 
 #include "../patient/patient.hh"
 #include "name_generator.hh"
+#include "gender_generator.hh"
 #include "address_generator.hh"
 #include "marital_status_generator.hh"
 #include "language_generator.hh"
@@ -23,7 +24,7 @@ using namespace std;
 
 class generator {
 public:
-    static string get_uuid() {
+    static string generate_uuid() {
         static random_device dev;
         static mt19937 rng(dev());
 
@@ -33,8 +34,8 @@ public:
         const bool dash[] = { 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0 };
 
         string res;
-        for (int i = 0; i < 16; i++) {
-            if (dash[i]) res += "-";
+        for (bool i : dash) {
+            if (i) res += "-";
             res += v[dist(rng)];
             res += v[dist(rng)];
         }
@@ -44,6 +45,7 @@ public:
     vector<patient> original_patients;
 
     class name_generator name_generator;
+    class gender_generator gender_generator;
     class address_generator address_generator;
     class marital_status_generator marital_status_generator;
     class language_generator language_generator;
@@ -53,6 +55,7 @@ public:
 
     explicit generator (vector<patient>& p) : original_patients(std::move(p)),
                                               name_generator(original_patients),
+                                              gender_generator(original_patients),
                                               address_generator(original_patients),
                                               marital_status_generator(original_patients),
                                               language_generator(original_patients),
@@ -60,6 +63,12 @@ public:
                                               identifier_generator(original_patients),
                                               multiple_birth_generator(original_patients) { }
 
+    patient generate_patient () {
+        string uuid = generate_uuid();
+        gender gender = gender_generator.generate();
+
+        return original_patients[0];
+    }
 
 
 };
