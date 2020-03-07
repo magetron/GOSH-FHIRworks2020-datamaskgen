@@ -5,8 +5,17 @@
 #ifndef GOSH_FHIRWORKS2020_DATAMASKER_FILTER_HH
 #define GOSH_FHIRWORKS2020_DATAMASKER_FILTER_HH
 
+#include <vector>
+#include <string>
+
+#include <patient/patient.hh>
+
+using namespace std;
 
 class filter {
+    vector<patient>& patients;
+
+    explicit filter (vector<patient>& p) : patients (p) { }
 
 };
 
