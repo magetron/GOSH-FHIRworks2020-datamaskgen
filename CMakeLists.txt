@@ -25,3 +25,6 @@ target_link_libraries(GOSH_FHIRworks2020_datamasker ${CPR_LIBRARIES})
 add_executable(GOSH_FHIRworks2020_datamasker_test test/test_api.cc test/test_generator.cc test/test_main.cc)
 target_link_libraries(GOSH_FHIRworks2020_datamasker_test Catch2::Catch2 ${CPR_LIBRARIES})
 
+enable_testing()
+include(CTest)
+ParseAndAddCatchTests(GOSH_FHIRworks2020_datamasker_test)
