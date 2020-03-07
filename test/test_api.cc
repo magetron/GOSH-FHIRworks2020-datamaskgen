@@ -5,7 +5,7 @@
 #include <catch2/catch.hpp>
 #include <api/api.hh>
 
-TEST_CASE("API should download and read data", "[api]") {
+TEST_CASE("API should download and read data", "[.][api]") {
     auto download_result = api::refresh_patients_json();
     REQUIRE(download_result.second);
     auto read_result = api::read_patients_json();

@@ -27,4 +27,5 @@ target_link_libraries(GOSH_FHIRworks2020_datamasker_test Catch2::Catch2 ${CPR_LI
 
 enable_testing()
 include(CTest)
+set(PARSE_CATCH_TESTS_NO_HIDDEN_TESTS ON)
 ParseAndAddCatchTests(GOSH_FHIRworks2020_datamasker_test)
