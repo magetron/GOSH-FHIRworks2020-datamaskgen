@@ -10,7 +10,6 @@
 #include <unordered_set>
 #include <nlohmann/json.hpp>
 
-#include "api_config.hh"
 #include "../patient/patient.hh"
 
 using namespace std;
@@ -18,11 +17,11 @@ using json = nlohmann::json;
 
 class api {
 public:
-    static pair<string, bool> refresh_patients_json() {
-        auto request = cpr::Get(cpr::Url{PATIENTS_JSON_API_ENDPOINT}, cpr::VerifySsl(false));
+    static pair<string, bool> refresh_patients_json(const string& endpoint, const string& cache_loc) {
+        auto request = cpr::Get(cpr::Url{endpoint}, cpr::VerifySsl(false));
         if (request.status_code != 200) return {"", false};
         ofstream patients_json;
-        patients_json.open(CACHE_FOLDER + "patients.json");
+        patients_json.open(cache_loc + "patients.json");
         patients_json.clear();
         try {
             auto parser = nlohmann::json::parse(request.text);
@@ -34,9 +33,9 @@ public:
         return {request.text, true};
     }
 
-    static pair<string, bool> read_patients_json() {
+    static pair<string, bool> read_patients_json(const string& cache_loc) {
         ifstream patients_json;
-        patients_json.open(CACHE_FOLDER + "patients.json");
+        patients_json.open(cache_loc + "patients.json");
         if (!patients_json) return {"", false};
         stringstream patients_json_stream;
         patients_json_stream << patients_json.rdbuf();

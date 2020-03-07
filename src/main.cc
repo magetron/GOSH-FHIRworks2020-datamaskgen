@@ -8,6 +8,7 @@
 
 #include "generator/generator.hh"
 #include "api/api.hh"
+#include "config/config.hh"
 
 using namespace std;
 using json = nlohmann::json;
@@ -21,11 +22,8 @@ static int fast_io = [] () {
 
 int main(int argc, char** argv) {
 
-    auto result = api::refresh_patients_json();
-    string str = result.first;
-    bool suc = result.second;
-    cout << suc << endl;
-    string patients_json_string = api::read_patients_json().first;
+    auto result = api::refresh_patients_json(PATIENTS_JSON_API_ENDPOINT, CACHE_FOLDER);
+    string patients_json_string = api::read_patients_json(CACHE_FOLDER).first;
     //cout << patients_json_string << endl;
     //auto data = json::parse(patients_json_string);
     //cout << data.dump(4) << endl;

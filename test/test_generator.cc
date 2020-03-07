@@ -6,7 +6,11 @@
 #include <generator/generator.hh>
 #include <api/api.hh>
 
-TEST_CASE("static generation of uuid should meet standards.", "[generator][uuid]") {
+#include "test_config.hh"
+
+using namespace std;
+
+TEST_CASE("static generation of uuid should meet standards", "[generator][uuid]") {
     string uuid_sample = generator::generate_uuid();
 
     SECTION("uuid should be 36 in length") {
@@ -22,7 +26,8 @@ TEST_CASE("static generation of uuid should meet standards.", "[generator][uuid]
 
 TEST_CASE("generate patient should work", "[generator]") {
 
-    auto patients_str = api::read_patients_json().first;
+    auto patients_str =
+            api::refresh_patients_json(TEST_ENDPOINT, TEST_CACHE_LOC).first;
     auto patients = api::parse_raw_patients(patients_str);
     auto one_patient_vector = vector<patient>{patients[0]};
 
@@ -31,6 +36,5 @@ TEST_CASE("generate patient should work", "[generator]") {
         auto p = g.generate_patient();
         REQUIRE(p.name == one_patient_vector.front().name);
     }
-
 
 }
