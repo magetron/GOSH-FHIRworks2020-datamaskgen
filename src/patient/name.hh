@@ -6,6 +6,7 @@
 #define GOSH_FHIRWORKS2020_DATAMASKER_NAME_CC
 
 #include <string>
+#include <sstream>
 #include <utility>
 #include <vector>
 
