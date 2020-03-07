@@ -28,6 +28,7 @@ public:
         return uuid == p1.uuid;
     }
 
+    string uuid;
     name name;
     gender gender;
     tm birthday;
@@ -36,7 +37,6 @@ public:
     vector<language> communication_languages;
     vector<telecom> telecoms;
     vector<identifier> identifiers;
-    string uuid;
     bool multiple_birth = false;
     int multiple_birth_count = 1;
 
@@ -53,10 +53,10 @@ public:
     patient (class name n, enum gender g, tm bday, vector<address> addrs, class marital_status m_status,
             vector<language> c_langs, vector<telecom> ts, vector<identifier> is, string uid,
             bool m_birth, int m_birth_count)
-            : name(std::move(n)), gender(std::move(g)), birthday(std::move(bday)),
+            : uuid(std::move(uid)), name(std::move(n)), gender(std::move(g)), birthday(std::move(bday)),
               addresses(std::move(addrs)), marital_status(std::move(m_status)),
               communication_languages(std::move(c_langs)), telecoms(std::move(ts)),
-              identifiers(std::move(is)), uuid(std::move(uid)), multiple_birth(m_birth),
+              identifiers(std::move(is)), multiple_birth(m_birth),
               multiple_birth_count(m_birth_count) { }
 
 };

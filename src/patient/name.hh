@@ -19,13 +19,13 @@ public:
     }
 
     vector<tuple<string, string, string>> unofficial_names; // prefix, given name, family name
+    string prefix;
     string given_name;
     string family_name;
-    string prefix;
 
     name () = default;
 
-    name (string pre, string gn, string fn) : prefix(std::move(pre)), given_name(move(gn)), family_name(move(fn)) { }
+    name (string pre, string gn, string fn) : prefix(std::move(pre)), given_name(std::move(gn)), family_name(std::move(fn)) { }
 
     void add_unofficial_name (const string& pre, const string& gn, const string& fn) {
         unofficial_names.emplace_back(pre, gn, fn);
@@ -34,6 +34,18 @@ public:
     friend ostream& operator << (ostream& os, const name& n) {
         os << n.prefix << " " << n.given_name << " " << n.family_name;
         return os;
+    }
+
+    string jsonify () {
+        std::stringstream ss;
+        ss << "\"name\":[{\"use\":\"official\",\"family\":\"" << family_name << "\",\"given\":[\"" << given_name <<
+            "\"],\"prefix\":[\"" << prefix << "\"]}";
+        for (auto t : unofficial_names) {
+            ss << ",{\"use\":\"unofficial\",\"family\":\"" << get<2>(t) << "\",\"given\":[\"" << get<1>(t) <<
+            "\"],\"prefix\":[\"" << get<0>(t) << "\"]}";
+        }
+        ss << "]";
+        return ss.str();
     }
 
     ~name () = default;

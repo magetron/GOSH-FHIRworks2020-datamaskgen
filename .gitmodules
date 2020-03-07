@@ -7,3 +7,9 @@
 [submodule "dependencies/Catch2"]
 	path = dependencies/Catch2
 	url = https://github.com/catchorg/Catch2
+[submodule "dependencies/argh"]
+	path = dependencies/argh
+	url = https://github.com/adishavit/argh
+[submodule "dependencies/spdlog"]
+	path = dependencies/spdlog
+	url = https://github.com/gabime/spdlog

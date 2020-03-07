@@ -5,6 +5,8 @@
 #include <iostream>
 #include <unordered_set>
 #include <nlohmann/json.hpp>
+#include <argh.h>
+#include <spdlog/spdlog.h>
 
 #include "generator/generator.hh"
 #include "api/api.hh"
@@ -22,19 +24,17 @@ static int fast_io = [] () {
 
 int main(int argc, char** argv) {
 
-    auto result = api::refresh_patients_json(PATIENTS_JSON_API_ENDPOINT, CACHE_FOLDER);
-    string patients_json_string = api::read_patients_json(CACHE_FOLDER).first;
-    //cout << patients_json_string << endl;
-    //auto data = json::parse(patients_json_string);
-    //cout << data.dump(4) << endl;
+    argh::parser cmdl(argc, argv);
 
-    auto patients = api::parse_raw_patients(patients_json_string);
+    if (!cmdl(1)) {
+        spdlog::info("DEFAULT CONFIG");
+        spdlog::info("API_ENDPOINT = {}", PATIENTS_JSON_API_ENDPOINT);
+        spdlog::info("CACHE_FOLDER_LOCATION = {}", CACHE_FOLDER);
 
-    generator g(patients);
-    for (int i = 0; i < 1000; i++) {
-        auto p = g.generate_patient();
-        cout << p.name << " " << p.marital_status << " " << p.multiple_birth << " " << p.multiple_birth_count << endl;
     }
+
+    if (cmdl[{ "-v", "--verbose" }])
+        std::cout << "Verbose, I am.\n";
 
     return 0;
 }

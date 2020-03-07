@@ -43,7 +43,7 @@ public:
 
         int r = dist(rng);
         auto it = upper_bound(ps.begin(), ps.end(), r);
-        return weights[it - ps.begin()].first;
+        return weights[(unsigned)(it - ps.begin())].first;
     }
 
 };
