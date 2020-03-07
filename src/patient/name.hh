@@ -13,6 +13,11 @@ using namespace std;
 
 class name {
 public:
+
+    bool operator == (const name& n1) const {
+        return given_name == n1.given_name && family_name == n1.family_name && prefix == n1.prefix;
+    }
+
     vector<tuple<string, string, string>> unofficial_names; // prefix, given name, family name
     string given_name;
     string family_name;

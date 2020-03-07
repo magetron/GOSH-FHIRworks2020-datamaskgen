@@ -43,7 +43,7 @@ public:
         return res;
     }
 
-    vector<patient> original_patients;
+    vector<patient>& original_patients;
 
     class name_generator name_generator;
     class gender_generator gender_generator;
@@ -55,7 +55,7 @@ public:
     class identifier_generator identifier_generator;
     class multiple_birth_generator multiple_birth_generator;
 
-    explicit generator (vector<patient>& p) : original_patients(std::move(p)),
+    explicit generator (vector<patient>& p) : original_patients(p),
                                               name_generator(original_patients),
                                               gender_generator(original_patients),
                                               birthday_generator(original_patients),
