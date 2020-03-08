@@ -44,14 +44,6 @@ public:
         return res;
     }
 
-    static string generate_current_timestamp () {
-        time_t now;
-        time(&now);
-        char buf[sizeof "YYYY-MM-DDThh:mm:ssZ"];
-        strftime(buf, sizeof buf, "%FT%TZ", gmtime(&now));
-        return buf;
-    }
-
     vector<patient>& original_patients;
 
     class name_generator name_generator;

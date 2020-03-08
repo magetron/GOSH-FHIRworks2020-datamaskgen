@@ -30,6 +30,13 @@ int main(int argc, char** argv) {
         spdlog::info("DEFAULT CONFIG");
         spdlog::info("API_ENDPOINT = {}", PATIENTS_JSON_API_ENDPOINT);
         spdlog::info("CACHE_FOLDER_LOCATION = {}", CACHE_FOLDER);
+        spdlog::info("DOWNLOADING...");
+        auto result = api::refresh_patients_json(PATIENTS_JSON_API_ENDPOINT, CACHE_FOLDER);
+        if (!result.second) spdlog::error("FAILED");
+        auto ps = api::parse_raw_patients(result.first);
+        spdlog::info("CONFIGURING GENERATOR...");
+        generator g(ps);
+        cout << g.generate_patient().jsonify() << endl;
     }
 
     if (cmdl[{ "-v", "--verbose" }])

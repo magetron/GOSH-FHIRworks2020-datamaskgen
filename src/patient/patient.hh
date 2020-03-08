@@ -9,7 +9,6 @@
 #include <ctime>
 #include <vector>
 #include <sstream>
-#include <generator/generator.hh>
 
 #include "name.hh"
 #include "address.hh"
@@ -23,6 +22,14 @@ using namespace std;
 
 class patient {
 public:
+
+    static string generate_current_timestamp () {
+        time_t now;
+        time(&now);
+        char buf[sizeof "YYYY-MM-DDThh:mm:ssZ"];
+        strftime(buf, sizeof buf, "%FT%TZ", gmtime(&now));
+        return buf;
+    }
 
     bool operator == (const patient& p1) const {
         return uuid == p1.uuid;
@@ -61,12 +68,12 @@ public:
 
     string jsonify () {
         stringstream ss;
-        ss << "{\"fullUrl\":\"\",\"resource\":{\"resourceType\":\"Patient\",\"id\":\"" << uuid << "\",";
-        ss << "\"meta\":{\"versionId\":\"4\",\"lastUpdated\":\"" << generator::generate_current_timestamp() << "\"},";
-        ss << "\"text\":{\"status\":\"generated\",\"div\":\"\"},";
+        ss << R"({"fullUrl":"","resource":{"resourceType":"Patient","id":")" << uuid << "\",";
+        ss << R"("meta":{"versionId":"4","lastUpdated":")" << generate_current_timestamp() << "\"},";
+        ss << R"("text":{"status":"generated","div":""},)";
         ss << "\"identifier\":[";
         for (size_t i = 0; i < identifiers.size() - 1; i++) ss << identifiers[i].jsonify() << ","; ss << identifiers.back().jsonify() << "],";
-        ss << "\"name\":[" << name.jsonify() << "],";
+        ss << name.jsonify() << ",";
         ss << "\"telecom\":[";
         for (size_t i = 0; i < telecoms.size() - 1; i++) ss << telecoms[i].jsonify() << ","; ss << telecoms.back().jsonify() << "],";
         ss << "\"gender\":\"";
@@ -89,7 +96,7 @@ public:
         else ss << "\"multipleBirthInteger\":" << multiple_birth_count << ",";
         ss << "\"communication\":[";
         for (size_t i = 0; i < communication_languages.size() - 1; i++) ss << communication_languages[i].jsonify() << ","; ss << communication_languages.back().jsonify() << "]";
-        ss << "},\"search\":{\"mode\":\"match\"}}";
+        ss << "}";
         return ss.str();
     }
 
