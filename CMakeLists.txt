@@ -19,7 +19,7 @@ add_executable(GOSH_FHIRworks2020_datamasker src/main.cc src/api/api.hh src/conf
         src/generator/language_generator.hh src/generator/telecom_generator.hh src/generator/identifier_generator.hh
         src/generator/multiple_birth_generator.hh src/masker/masker.hh src/filter/filter.hh
         src/generator/gender_generator.hh src/generator/generator_with_weight.hh
-        src/generator/generator_random.hh src/generator/birthday_generator.hh)
+        src/generator/generator_random.hh src/generator/birthday_generator.hh src/generator/extension_generator.hh)
 target_link_libraries(GOSH_FHIRworks2020_datamasker ${CPR_LIBRARIES} argh spdlog::spdlog)
 
 add_executable(GOSH_FHIRworks2020_datamasker_test test/test_api.cc test/test_generator.cc test/test_main.cc

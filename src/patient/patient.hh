@@ -39,6 +39,7 @@ public:
     name name;
     gender gender;
     tm birthday;
+    string extensions;
     vector<address> addresses;
     marital_status marital_status;
     vector<language> communication_languages;
@@ -58,12 +59,12 @@ public:
     }
 
     patient (class name n, enum gender g, tm bday, vector<address> addrs, class marital_status m_status,
-            vector<language> c_langs, vector<telecom> ts, vector<identifier> is, string uid,
+            vector<language> c_langs, vector<telecom> ts, vector<identifier> is, string exs, string uid,
             bool m_birth, int m_birth_count)
             : uuid(std::move(uid)), name(std::move(n)), gender(std::move(g)), birthday(std::move(bday)),
               addresses(std::move(addrs)), marital_status(std::move(m_status)),
               communication_languages(std::move(c_langs)), telecoms(std::move(ts)),
-              identifiers(std::move(is)), multiple_birth(m_birth),
+              identifiers(std::move(is)), extensions(exs), multiple_birth(m_birth),
               multiple_birth_count(m_birth_count) { }
 
     string jsonify () {
@@ -71,6 +72,7 @@ public:
         ss << R"({"fullUrl":"","resource":{"resourceType":"Patient","id":")" << uuid << "\",";
         ss << R"("meta":{"versionId":"4","lastUpdated":")" << generate_current_timestamp() << "\"},";
         ss << R"("text":{"status":"generated","div":""},)";
+        ss << R"("extension":)" << extensions << ",";
         ss << "\"identifier\":[";
         for (size_t i = 0; i < identifiers.size() - 1; i++) ss << identifiers[i].jsonify() << ","; ss << identifiers.back().jsonify() << "],";
         ss << name.jsonify() << ",";
@@ -96,7 +98,7 @@ public:
         else ss << "\"multipleBirthInteger\":" << multiple_birth_count << ",";
         ss << "\"communication\":[";
         for (size_t i = 0; i < communication_languages.size() - 1; i++) ss << communication_languages[i].jsonify() << ","; ss << communication_languages.back().jsonify() << "]";
-        ss << "}";
+        ss << "}}";
         return ss.str();
     }
 

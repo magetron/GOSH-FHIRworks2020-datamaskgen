@@ -54,6 +54,7 @@ public:
                 auto name_json = resources["name"];
                 auto telecom_json = resources["telecom"];
                 auto address_json = resources["address"];
+                auto extension_json = resources["extension"];
                 auto identifier_json = resources["identifier"];
                 string gender = resources["gender"];
                 string birth_date = resources["birthDate"];
@@ -88,6 +89,9 @@ public:
                         new_patient.name.add_unofficial_name(pre, gn, fn);
                     }
                 }
+
+                new_patient.extensions = extension_json.dump();
+
                 for (const auto& identifier : identifier_json) {
                     string system = identifier["system"];
                     string value = identifier["value"];

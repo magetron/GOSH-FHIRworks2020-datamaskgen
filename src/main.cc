@@ -27,7 +27,7 @@ int main(int argc, char** argv) {
     argh::parser cmdl(argc, argv);
 
     if (!cmdl(1)) {
-        spdlog::info("DEFAULT CONFIG");
+        spdlog::info("using DEFAULT CONFIG");
         spdlog::info("API_ENDPOINT = {}", PATIENTS_JSON_API_ENDPOINT);
         spdlog::info("CACHE_FOLDER_LOCATION = {}", CACHE_FOLDER);
         spdlog::info("DOWNLOADING...");
