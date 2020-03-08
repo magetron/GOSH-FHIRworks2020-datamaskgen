@@ -28,7 +28,7 @@ TEST_CASE("generate patient should work", "[generator]") {
 
     auto patients_str =
             api::refresh_patients_json(TEST_ENDPOINT, TEST_CACHE_LOC).first;
-    auto patients = api::parse_raw_patients(patients_str);
+    auto patients = api::parse_raw_patients_from_endpoint(patients_str);
     auto one_patient_vector = vector<patient>{patients[0]};
 
     SECTION("generation of patient should be based on real data") {

@@ -43,7 +43,7 @@ public:
         return {patients_json_stream.str(), true};
     }
 
-    static vector<patient> parse_raw_patients(string& json_string) {
+    static vector<patient> parse_raw_patients_from_endpoint(string& json_string) {
         vector<patient> patients;
         auto json = json::parse(json_string);
         for (auto & it : json) {
@@ -160,6 +160,16 @@ public:
         }
         return patients;
     }
+
+    static bool write_to_file (stringstream& ss, const string& output_loc) {
+        ofstream os;
+        os.open(output_loc + "patients.json");
+        os.clear();
+        os << ss.rdbuf();
+        os.close();
+        return true;
+    }
+
 };
 
 
