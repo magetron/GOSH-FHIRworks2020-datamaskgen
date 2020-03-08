@@ -17,4 +17,8 @@ static size_t PATIENTS_GENERATED = 1000;
 
 static string OUTPUT_FOLDER("/Users/patrick/Documents/University-College-London/UCL-CS/Year-2/COMP0016/FHIR-Hackathon/GOSH-FHIRworks2020-datamasker/output/");
 
+static bool VERBOSE = false;
+
+static bool USE_CACHE = false;
+
 #endif
