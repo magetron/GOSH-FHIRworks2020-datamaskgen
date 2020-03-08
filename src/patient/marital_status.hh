@@ -41,9 +41,8 @@ public:
     string jsonify () {
         stringstream ss;
         ss << "\"maritalStatus\":{\"coding\":[";
-        for (size_t i = 0; i < encodings.size() - 1; i++) ss << "{\"system\":\"" << encodings[i].system << "\",\"code\":\"" << encodings[i].code << "\",\"display\":\"" << encodings[i].display << "\"},";
-        ss << "{\"system\":\"" << encodings.back().system << "\",\"code\":\"" << encodings.back().code << "\",\"display\":\"" << encodings.back().display << "\"}";
-        ss << "],\"text\":\"" << text << "\"}";
+        for (size_t i = 0; i < encodings.size() - 1; i++) ss << encodings[i].jsonify() << ",";
+        ss << encodings.back().jsonify() << "],\"text\":\"" << text << "\"}";
         return ss.str();
     }
 };

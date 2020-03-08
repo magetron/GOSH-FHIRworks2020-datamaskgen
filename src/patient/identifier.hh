@@ -7,6 +7,7 @@
 
 #include <string>
 #include <optional>
+#include <sstream>
 
 #include "identifier_type.hh"
 
@@ -31,6 +32,16 @@ public:
         } else {
             type -> text = text;
         }
+    }
+
+    string jsonify () {
+        stringstream ss;
+        ss << "{";
+        if (type.has_value()) {
+            ss << type->jsonify() << ",";
+        }
+        ss << "\"system\":\"" << system << "\",\"value\":\"" << value <<"\"}";
+        return ss.str();
     }
 
     void add_type_encoding (const string& system, const string& code, const string& display) {

@@ -21,6 +21,7 @@ public:
     string jsonify () {
         stringstream ss;
         ss << "\"extension\":[{\"extension\":[{\"url\":\"latitude\",\"valueDecimal\":" << latitude << "},{\"url\":\"longitude\",\"valueDecimal\":" << longitude << "}]";
+        return ss.str();
     }
 };
 

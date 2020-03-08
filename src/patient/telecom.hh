@@ -6,6 +6,7 @@
 #define GOSH_FHIRWORKS2020_DATAMASKER_TELECOM_HH
 
 #include <string>
+#include <sstream>
 
 using namespace std;
 
@@ -21,6 +22,12 @@ public:
     friend ostream& operator << (ostream& os, const telecom& t) {
         os << t.system << " " << t.value << " " << t.use;
         return os;
+    }
+
+    string jsonify () {
+        stringstream ss;
+        ss << "{\"system\":\"" << system << "\",\"value\":\"" << value << "\",\"use\":\"" << use <<"\"}";
+        return ss.str();
     }
 
     ~telecom() = default;

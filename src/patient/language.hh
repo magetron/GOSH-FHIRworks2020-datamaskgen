@@ -35,7 +35,9 @@ public:
 
     string jsonify() {
         stringstream ss;
-        ss << "{\"language\":{\"coding\":[{\"system\":\"urn:ietf:bcp:47\",\"code\":\"en-US\",\"display\":\"English\"}],\"text\":\"English\"}}";
+        ss << "{\"language\":{\"coding\":[";
+        for (size_t i = 0; i < encodings.size() - 1; i++) ss << encodings[i].jsonify() << ",";
+        ss << encodings.back().jsonify() << "],\"text\":\"" << text << "\"}}";
         return ss.str();
     }
 
