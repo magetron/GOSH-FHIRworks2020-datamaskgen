@@ -30,7 +30,6 @@ int main(int argc, char** argv) {
         spdlog::info("DEFAULT CONFIG");
         spdlog::info("API_ENDPOINT = {}", PATIENTS_JSON_API_ENDPOINT);
         spdlog::info("CACHE_FOLDER_LOCATION = {}", CACHE_FOLDER);
-
     }
 
     if (cmdl[{ "-v", "--verbose" }])

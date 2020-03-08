@@ -7,7 +7,9 @@
 
 #include <string>
 #include <ctime>
-#include <set>
+#include <vector>
+#include <sstream>
+#include <generator/generator.hh>
 
 #include "name.hh"
 #include "address.hh"
@@ -16,8 +18,6 @@
 #include "identifier.hh"
 #include "gender.hh"
 #include "marital_status.hh"
-
-//TODO: extensions
 
 using namespace std;
 
@@ -58,6 +58,40 @@ public:
               communication_languages(std::move(c_langs)), telecoms(std::move(ts)),
               identifiers(std::move(is)), multiple_birth(m_birth),
               multiple_birth_count(m_birth_count) { }
+
+    string jsonify () {
+        stringstream ss;
+        ss << "{\"fullUrl\":\"\",\"resource\":{\"resourceType\":\"Patient\",\"id\":\"" << uuid << "\",";
+        ss << "\"meta\":{\"versionId\":\"4\",\"lastUpdated\":\"" << generator::generate_current_timestamp() << "\"},";
+        ss << "\"text\":{\"status\":\"generated\",\"div\":\"\"},";
+        ss << "\"identifier\":[";
+        for (size_t i = 0; i < identifiers.size() - 1; i++) ss << identifiers[i].jsonify() << ","; ss << identifiers.back().jsonify() << "],";
+        ss << "\"name\":[" << name.jsonify() << "],";
+        ss << "\"telecom\":[";
+        for (size_t i = 0; i < telecoms.size() - 1; i++) ss << telecoms[i].jsonify() << ","; ss << telecoms.back().jsonify() << "],";
+        ss << "\"gender\":\"";
+        switch (gender) {
+            case MALE:
+                ss << "male";
+                break;
+            case FEMALE:
+                ss << "female";
+                break;
+            default:
+                ss << "other";
+                break;
+        } ss << "\",";
+        ss << "\"birthDate\":\"" << birthday.tm_year << "-" << birthday.tm_mon << "-" << birthday.tm_mday << "\",";
+        ss << "\"address\":[";
+        for (size_t i = 0; i < addresses.size() - 1; i++) ss << addresses[i].jsonify() << ","; ss << addresses.back().jsonify() << "],";
+        ss << marital_status.jsonify() << ",";
+        if (!multiple_birth) ss << "\"multipleBirthBoolean\":" << multiple_birth << ",";
+        else ss << "\"multipleBirthInteger\":" << multiple_birth_count << ",";
+        ss << "\"communication\":[";
+        for (size_t i = 0; i < communication_languages.size() - 1; i++) ss << communication_languages[i].jsonify() << ","; ss << communication_languages.back().jsonify() << "]";
+        ss << "},\"search\":{\"mode\":\"match\"}}";
+        return ss.str();
+    }
 
 };
 

@@ -9,8 +9,9 @@
 #include <random>
 #include <vector>
 #include <string>
+#include <chrono>
 
-#include "../patient/patient.hh"
+#include <patient/patient.hh>
 #include "name_generator.hh"
 #include "gender_generator.hh"
 #include "birthday_generator.hh"
@@ -41,6 +42,14 @@ public:
             res += v[dist(rng)];
         }
         return res;
+    }
+
+    static string generate_current_timestamp () {
+        time_t now;
+        time(&now);
+        char buf[sizeof "YYYY-MM-DDThh:mm:ssZ"];
+        strftime(buf, sizeof buf, "%FT%TZ", gmtime(&now));
+        return buf;
     }
 
     vector<patient>& original_patients;
