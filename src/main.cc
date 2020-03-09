@@ -40,10 +40,10 @@ int main(int argc, char** argv) {
 
     if (cmdl[{ "-v", "--verbose" }]) VERBOSE = true;
     if (cmdl["--use-cache"]) USE_CACHE = true;
-    if (cmdl("--cache-loc").str() != "") CACHE_FOLDER = cmdl( "--cache-loc").str();
-    if (cmdl("--api").str() != "") PATIENTS_JSON_API_ENDPOINT = cmdl("--api").str();
-    if (cmdl("-g").str() != "") cmdl("-g") >> PATIENTS_GENERATED;
-    if (cmdl("-o").str() != "") OUTPUT_FOLDER = cmdl("-o").str();
+    if (!cmdl("--cache-loc").str().empty()) CACHE_FOLDER = cmdl( "--cache-loc").str();
+    if (!cmdl("--api").str().empty()) PATIENTS_JSON_API_ENDPOINT = cmdl("--api").str();
+    if (!cmdl("-g").str().empty()) cmdl("-g") >> PATIENTS_GENERATED;
+    if (!cmdl("-o").str().empty()) OUTPUT_FOLDER = cmdl("-o").str();
     this_thread::sleep_for(chrono::milliseconds(200));
 
     spdlog::info("using following config");
