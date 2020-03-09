@@ -90,7 +90,7 @@ public:
                 ss << "other";
                 break;
         } ss << "\",";
-        ss << "\"birthDate\":\"" << birthday.tm_year << "-" << birthday.tm_mon << "-" << birthday.tm_mday << "\",";
+        ss << "\"birthDate\":\"" << birthday.tm_year + 1900 << "-" << birthday.tm_mon << "-" << birthday.tm_mday << "\",";
         ss << "\"address\":[";
         for (size_t i = 0; i < addresses.size() - 1; i++) ss << addresses[i].jsonify() << ","; ss << addresses.back().jsonify() << "],";
         ss << marital_status.jsonify() << ",";
