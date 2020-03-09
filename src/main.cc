@@ -52,6 +52,7 @@ int main(int argc, char** argv) {
     spdlog::info("\tAPI_ENDPOINT = {}", USE_CACHE ? "USING CACHE" : PATIENTS_JSON_API_ENDPOINT );
     spdlog::info("\tPATIENTS_GENERATED = {}", PATIENTS_GENERATED);
     spdlog::info("\tOUTPUT_FOLDER_LOCATION = {}", OUTPUT_FOLDER);
+    spdlog::info("\tMASKING = {}", MASK);
     spdlog::info("downloading / reading from cache...");
     pair<string, bool> result;
     if (!USE_CACHE) result = api::refresh_patients_json(PATIENTS_JSON_API_ENDPOINT, CACHE_FOLDER);
