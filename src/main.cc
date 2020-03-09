@@ -12,6 +12,7 @@
 #include <spdlog/spdlog.h>
 
 #include "generator/generator.hh"
+#include "masker/masker.hh"
 #include "api/api.hh"
 #include "config/config.hh"
 #include "cli/cli.hh"
@@ -40,6 +41,7 @@ int main(int argc, char** argv) {
 
     if (cmdl[{ "-v", "--verbose" }]) VERBOSE = true;
     if (cmdl["--use-cache"]) USE_CACHE = true;
+    if (cmdl["--mask"]) MASK = true;
     if (!cmdl("--cache-loc").str().empty()) CACHE_FOLDER = cmdl( "--cache-loc").str();
     if (!cmdl("--api").str().empty()) PATIENTS_JSON_API_ENDPOINT = cmdl("--api").str();
     if (!cmdl("-g").str().empty()) cmdl("-g") >> PATIENTS_GENERATED;
@@ -56,6 +58,10 @@ int main(int argc, char** argv) {
     else result = api::read_patients_json(CACHE_FOLDER);
     if (!result.second) spdlog::error("failed.");
     auto ps = api::parse_raw_patients_from_endpoint(result.first);
+    if (MASK) {
+        masker m(ps);
+        ps = m.mask();
+    }
     spdlog::info("configuring generator...");
     generator g(ps);
     stringstream ss;

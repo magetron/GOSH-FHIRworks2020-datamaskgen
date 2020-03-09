@@ -21,4 +21,6 @@ static bool VERBOSE = false;
 
 static bool USE_CACHE = false;
 
+static bool MASK = false;
+
 #endif
