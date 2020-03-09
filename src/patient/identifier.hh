@@ -7,6 +7,7 @@
 
 #include <string>
 #include <optional>
+#include <sstream>
 
 #include "identifier_type.hh"
 
@@ -23,7 +24,12 @@ public:
     string value;
     optional<identifier_type> type;
 
-    identifier (string sys, string val) : system(std::move(sys)), value(std::move(val)) { }
+    identifier (string sys, string val) : system(std::move(sys)), value(std::move(val)) {
+        if (system == "https://github.com/synthetichealth/synthea") {
+            system = "https://github.com/magetron/GOSH-FHIRworks2020-datamasker";
+            value = "";
+        }
+    }
 
     void init_type(const string& text) {
         if (!type.has_value()) {
@@ -31,6 +37,16 @@ public:
         } else {
             type -> text = text;
         }
+    }
+
+    string jsonify () {
+        stringstream ss;
+        ss << "{";
+        if (type.has_value()) {
+            ss << type->jsonify() << ",";
+        }
+        ss << "\"system\":\"" << system << "\",\"value\":\"" << value <<"\"}";
+        return ss.str();
     }
 
     void add_type_encoding (const string& system, const string& code, const string& display) {

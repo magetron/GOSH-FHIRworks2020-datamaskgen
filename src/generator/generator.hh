@@ -9,8 +9,9 @@
 #include <random>
 #include <vector>
 #include <string>
+#include <chrono>
 
-#include "../patient/patient.hh"
+#include <patient/patient.hh>
 #include "name_generator.hh"
 #include "gender_generator.hh"
 #include "birthday_generator.hh"
@@ -18,6 +19,7 @@
 #include "marital_status_generator.hh"
 #include "language_generator.hh"
 #include "telecom_generator.hh"
+#include "extension_generator.hh"
 #include "identifier_generator.hh"
 #include "multiple_birth_generator.hh"
 
@@ -52,6 +54,7 @@ public:
     class marital_status_generator marital_status_generator;
     class language_generator language_generator;
     class telecom_generator telecom_generator;
+    class extension_generator extension_generator;
     class identifier_generator identifier_generator;
     class multiple_birth_generator multiple_birth_generator;
 
@@ -63,6 +66,7 @@ public:
                                               marital_status_generator(original_patients),
                                               language_generator(original_patients),
                                               telecom_generator(original_patients),
+                                              extension_generator(original_patients),
                                               identifier_generator(original_patients),
                                               multiple_birth_generator(original_patients) { }
 
@@ -76,11 +80,12 @@ public:
         vector<language> languages = language_generator.generate();
         vector<telecom> telecoms = telecom_generator.generate();
         vector<identifier> identifiers = identifier_generator.generate();
+        string extensions = extension_generator.generate();
         auto m_birth_pair = multiple_birth_generator.generate();
         bool multiple_birth = m_birth_pair.first;
         int multiple_birth_count = m_birth_pair.second;
         return patient(name, gender, birthday, {address}, m_status, languages, telecoms,
-                identifiers, uuid, multiple_birth, multiple_birth_count);
+                identifiers, extensions, uuid, multiple_birth, multiple_birth_count);
     }
 
 };

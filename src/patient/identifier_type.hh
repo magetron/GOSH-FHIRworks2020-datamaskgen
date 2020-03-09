@@ -7,6 +7,7 @@
 
 #include <vector>
 #include <string>
+#include <sstream>
 
 #include "encoding.hh"
 
@@ -18,6 +19,14 @@ public:
     string text;
 
     explicit identifier_type (string t) : text(std::move(t)) { }
+
+    string jsonify () {
+        stringstream ss;
+        ss << "\"type\":{\"coding\":[";
+        for (size_t i = 0; i < encodings.size() - 1; i++) ss << encodings[i].jsonify() << ",";
+        ss << encodings.back().jsonify() << "],\"text\":\"" << text << "\"}";
+        return ss.str();
+    }
 
     ~identifier_type() = default;
 };

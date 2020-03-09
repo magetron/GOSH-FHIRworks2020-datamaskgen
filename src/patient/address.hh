@@ -7,6 +7,8 @@
 
 #include <string>
 #include <optional>
+#include <sstream>
+
 #include "geolocation.hh"
 
 using namespace std;
@@ -45,6 +47,14 @@ public:
     }
 
     ~address() = default;
+
+    string jsonify () {
+        stringstream ss;
+        ss << "{" << (geolocation.has_value() ? geolocation->jsonify() : "") << ",\"url\":\"http://hl7.org/fhir/StructureDefinition/geolocation\"}],\"line\":[";
+        for (size_t i = 0; i < lines.size() - 1; i++) ss << "\"" << lines[i] << "\",";
+        ss << "\"" << lines.back() << "\"],\"city\":\"" << city << "\",\"state\":\"" << state << "\",\"postalCode\":\"" << postal_code << "\",\"country\":\"" << country << "\"}";
+        return ss.str();
+    }
 };
 
 #endif //GOSH_FHIRWORKS2020_DATAMASKER_ADDRESS_HH

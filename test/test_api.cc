@@ -24,7 +24,7 @@ TEST_CASE("API should download and read data", "[api]") {
     SECTION("API should parse patient data correctly") {
         auto read_result = api::read_patients_json(TEST_CACHE_LOC);
         REQUIRE(read_result.second);
-        REQUIRE_NOTHROW(api::parse_raw_patients(read_result.first));
+        REQUIRE_NOTHROW(api::parse_raw_patients_from_endpoint(read_result.first));
     }
 }
 

@@ -43,7 +43,7 @@ public:
         return {patients_json_stream.str(), true};
     }
 
-    static vector<patient> parse_raw_patients(string& json_string) {
+    static vector<patient> parse_raw_patients_from_endpoint(string& json_string) {
         vector<patient> patients;
         auto json = json::parse(json_string);
         for (auto & it : json) {
@@ -54,6 +54,7 @@ public:
                 auto name_json = resources["name"];
                 auto telecom_json = resources["telecom"];
                 auto address_json = resources["address"];
+                auto extension_json = resources["extension"];
                 auto identifier_json = resources["identifier"];
                 string gender = resources["gender"];
                 string birth_date = resources["birthDate"];
@@ -88,6 +89,9 @@ public:
                         new_patient.name.add_unofficial_name(pre, gn, fn);
                     }
                 }
+
+                new_patient.extensions = extension_json.dump();
+
                 for (const auto& identifier : identifier_json) {
                     string system = identifier["system"];
                     string value = identifier["value"];
@@ -156,6 +160,16 @@ public:
         }
         return patients;
     }
+
+    static bool write_to_file (stringstream& ss, const string& output_loc) {
+        ofstream os;
+        os.open(output_loc + "patients.json");
+        os.clear();
+        os << ss.rdbuf();
+        os.close();
+        return true;
+    }
+
 };
 
 

@@ -9,7 +9,7 @@
 #include <iostream>
 #include <unordered_map>
 
-#include "../patient/patient.hh"
+#include <patient/patient.hh>
 #include "generator_random.hh"
 
 using namespace std;

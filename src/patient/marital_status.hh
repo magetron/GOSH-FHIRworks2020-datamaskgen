@@ -7,6 +7,7 @@
 
 #include <vector>
 #include <string>
+#include <sstream>
 
 #include "encoding.hh"
 
@@ -36,6 +37,14 @@ public:
     }
 
     ~marital_status() = default;
+
+    string jsonify () {
+        stringstream ss;
+        ss << "\"maritalStatus\":{\"coding\":[";
+        for (size_t i = 0; i < encodings.size() - 1; i++) ss << encodings[i].jsonify() << ",";
+        ss << encodings.back().jsonify() << "],\"text\":\"" << text << "\"}";
+        return ss.str();
+    }
 };
 
 namespace std {

@@ -6,6 +6,7 @@
 #define GOSH_FHIRWORKS2020_DATAMASKER_GEOLOCATION_HH
 
 #include <string>
+#include <sstream>
 
 class geolocation {
 public:
@@ -16,6 +17,12 @@ public:
     geolocation (double la, double lo) : latitude(la), longitude(lo) { }
 
     ~geolocation() = default;
+
+    string jsonify () {
+        stringstream ss;
+        ss << "\"extension\":[{\"extension\":[{\"url\":\"latitude\",\"valueDecimal\":" << latitude << "},{\"url\":\"longitude\",\"valueDecimal\":" << longitude << "}]";
+        return ss.str();
+    }
 };
 
 #endif //GOSH_FHIRWORKS2020_DATAMASKER_GEOLOCATION_HH

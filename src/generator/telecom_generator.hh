@@ -43,10 +43,10 @@ public:
     }
 
     vector<telecom> generate () {
-        int c = telecom_count_gen.generate();
+        size_t c = telecom_count_gen.generate();
         vector<telecom> new_telecoms;
         unordered_map<string, int> sample_lib;
-        for (int i = 0; i < c; i++) {
+        for (size_t i = 0; i < c; i++) {
             string use = telecom_use_gen.generate();
             if (sample_lib.find(use) != sample_lib.end())
                 sample_lib[use]++;

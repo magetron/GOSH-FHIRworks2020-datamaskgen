@@ -6,6 +6,7 @@
 #define GOSH_FHIRWORKS2020_DATAMASKER_LANGUAGE_HH
 
 #include <vector>
+#include <sstream>
 
 #include "encoding.hh"
 
@@ -30,6 +31,14 @@ public:
     friend ostream& operator << (ostream& os, const language& l) {
         os << l.text;
         return os;
+    }
+
+    string jsonify() {
+        stringstream ss;
+        ss << "{\"language\":{\"coding\":[";
+        for (size_t i = 0; i < encodings.size() - 1; i++) ss << encodings[i].jsonify() << ",";
+        ss << encodings.back().jsonify() << "],\"text\":\"" << text << "\"}}";
+        return ss.str();
     }
 
     ~language() = default;

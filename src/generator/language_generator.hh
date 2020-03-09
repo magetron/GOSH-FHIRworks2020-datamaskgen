@@ -35,10 +35,10 @@ public:
     }
 
     vector<language> generate () {
-        int l_count = l_count_gen.generate();
+        size_t l_count = l_count_gen.generate();
         vector<language> gen_languages;
         auto l_lib = language_lib;
-        for (int i = 0; i < l_count; i++) {
+        for (size_t i = 0; i < l_count; i++) {
             generator_with_weight<language> l_gen(l_lib);
             language new_l = l_gen.generate();
             gen_languages.emplace_back(new_l);
