@@ -61,7 +61,7 @@ int main(int argc, char** argv) {
     stringstream ss;
     ss << "[";
     for (size_t i = 0; i < PATIENTS_GENERATED - 1; i++) {
-        spdlog::info("[{}%] generating in progress ...", i * 1.0 / PATIENTS_GENERATED * 100.0);
+        spdlog::info("[{}%] generating in progress ...", roundf(i * 1.0 / PATIENTS_GENERATED * 100.0 * 100) / 100);
         generate_patient_and_log(g, ss, VERBOSE);
         ss << ",";
     }
