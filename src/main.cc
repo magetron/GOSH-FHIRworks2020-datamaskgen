@@ -10,6 +10,7 @@
 #include <nlohmann/json.hpp>
 #include <argh.h>
 #include <spdlog/spdlog.h>
+#include <tabulate/table.hpp>
 
 #include "generator/generator.hh"
 #include "masker/masker.hh"
@@ -19,6 +20,7 @@
 
 using namespace std;
 using json = nlohmann::json;
+using namespace tabulate;
 
 static int fast_io = [] () {
     ios_base::sync_with_stdio(false);
@@ -38,6 +40,34 @@ int main(int argc, char** argv) {
     argh::parser cmdl;
     cmdl.add_params({"--cache-loc", "--api", "-g", "-o"});
     cmdl.parse(argc, argv);
+
+    if (cmdl[{"--about"}]) {
+        Table readme;
+        readme.format().border_color(Color::white);
+
+        readme.add_row({"GOSH FHIRworks 2020 Data Masker - Generator"});
+        readme[0].format().font_align(FontAlign::center).font_color(Color::blue);
+
+        readme.add_row({"https://github.com/magetron/GOSH-FHIRworks2020-datamasker"});
+        readme[1]
+                .format()
+                .font_align(FontAlign::center)
+                .font_style({FontStyle::underline, FontStyle::italic})
+                .font_color(Color::white)
+                .hide_border_top();
+
+        readme.add_row({"A data synthesizer and masker that takes in real FHIR patient data and generate data providing certain rules.\n "
+                        "This tool is developed with performance and customisation in mind. See [TODO: UPDATES] on how to customise with custom data modules."});
+        readme[2].format().font_style({FontStyle::italic}).font_color(Color::magenta);
+
+        Table highlights;
+        highlights.add_row({"Build: passing", "Requires C++17", "Apache-2.0 License"});
+        readme.add_row({highlights});
+        readme[3].format().font_align(FontAlign::center).hide_border_top();
+        cout << readme << endl;
+        return 0;
+    }
+
 
     if (cmdl[{ "-v", "--verbose" }]) VERBOSE = true;
     if (cmdl["--use-cache"]) USE_CACHE = true;

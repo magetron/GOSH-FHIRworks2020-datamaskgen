@@ -8,7 +8,7 @@ set(OPENSSL_LIBRARIES /usr/local/ssl/lib)
 add_subdirectory(dependencies)
 add_subdirectory(src)
 
-include_directories(${CPR_INCLUDE_DIRS} ${JSON_INCLUDE_DIRS} ${CATCH2_INCLUDE_DIRS} ${SOURCE_DIRS})
+include_directories(${CPR_INCLUDE_DIRS} ${JSON_INCLUDE_DIRS} ${CATCH2_INCLUDE_DIRS} ${TABULATE_INCLUDE_DIRS} ${SOURCE_DIRS})
 
 add_executable(GOSH_FHIRworks2020_datamasker src/main.cc src/api/api.hh src/config/config.hh
         src/patient/patient.hh src/patient/name.hh src/patient/address.hh src/patient/geolocation.hh
