@@ -35,7 +35,7 @@ void generate_patient_and_log (generator& g, stringstream& ss, bool log) {
 int main(int argc, char** argv) {
 
     argh::parser cmdl;
-    cmdl.add_params({"--cache-loc", "--api", "-g", "--generate", "-o"});
+    cmdl.add_params({"--cache-loc", "--api", "-g", "-o"});
     cmdl.parse(argc, argv);
 
     if (cmdl[{ "-v", "--verbose" }]) VERBOSE = true;
