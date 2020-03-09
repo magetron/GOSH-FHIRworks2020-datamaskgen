@@ -15,6 +15,11 @@ using namespace std;
 
 class address {
 public:
+
+    bool operator == (const address& a1) const {
+        return country == a1.country && postal_code == a1.postal_code && state == a1.state && city == a1.city && lines == a1.lines;
+    }
+
     string country;
     string postal_code;
     string state;

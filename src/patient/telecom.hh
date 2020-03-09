@@ -12,6 +12,11 @@ using namespace std;
 
 class telecom {
 public:
+
+    bool operator == (const telecom& t1) const {
+        return (system == t1.system) && (value == t1.value) && (use == t1.use);
+    }
+
     string system;
     string value;
     string use;
