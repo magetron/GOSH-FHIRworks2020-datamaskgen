@@ -20,6 +20,7 @@ public:
     static pair<string, bool> refresh_patients_json(const string& endpoint, const string& cache_loc) {
         auto request = cpr::Get(cpr::Url{endpoint}, cpr::VerifySsl(false));
         if (request.status_code != 200) return {"", false};
+        std::filesystem::create_directories(cache_loc);
         ofstream patients_json;
         patients_json.open(cache_loc + "patients.json");
         patients_json.clear();
@@ -162,6 +163,7 @@ public:
     }
 
     static bool write_to_file (stringstream& ss, const string& output_loc) {
+        std::filesystem::create_directories(output_loc);
         ofstream os;
         os.open(output_loc + "patients.json");
         os.clear();
