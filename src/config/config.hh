@@ -23,6 +23,4 @@ static bool USE_CACHE = false;
 
 static bool MASK = false;
 
-static bool PRINT_SUMMARY = true;
-
 #endif

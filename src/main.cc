@@ -109,10 +109,54 @@ int main(int argc, char** argv) {
     api::write_to_file(ss, OUTPUT_FOLDER);
     spdlog::info("{} patients generated, writing output json to {}", PATIENTS_GENERATED, OUTPUT_FOLDER + "patients.json");
 
-    if (PRINT_SUMMARY) {
+    if (VERBOSE) {
+        spdlog::info("SUMMARY generated below at time {}", patient::generate_current_timestamp());
         Table summary;
         summary.format().border_color(Color::white);
-        summary.add_row({"SUMMARY"});
+        summary.add_row({"SUMMARY", "WARNING", "SUMMARY", "WARNING"});
+        summary[0].format().color(Color::green);
+        Table name_summary;
+        name_summary.add_row({"NAME generator", "VALUE"});
+        name_summary.add_row({"MALE prefix types = ", to_string(g.name_generator.male_lib.prefix_lib.size())});
+        name_summary.add_row({"MALE given name types = ", to_string(g.name_generator.male_lib.given_name_lib.size())});
+        name_summary.add_row({"MALE family name types = ", to_string(g.name_generator.male_lib.family_name_lib.size())});
+        name_summary.add_row({"FEMALE prefix types = ", to_string(g.name_generator.female_lib.prefix_lib.size())});
+        name_summary.add_row({"FEMALE given name types = ", to_string(g.name_generator.female_lib.given_name_lib.size())});
+        name_summary.add_row({"FEMALE family name types = ", to_string(g.name_generator.female_lib.family_name_lib.size())});
+        name_summary.add_row({"OTHER prefix types = ", to_string(g.name_generator.other_lib.prefix_lib.size())});
+        name_summary.add_row({"OTHER given name types = ", to_string(g.name_generator.other_lib.given_name_lib.size())});
+        name_summary.add_row({"OTHER family name types = ", to_string(g.name_generator.other_lib.family_name_lib.size())});
+        Table gender_summary;
+        gender_summary.add_row({"GENDER generator", "VALUE"});
+        gender_summary.add_row({"GENDER types = ", to_string(g.gender_generator.gender_lib.size())});
+        gender_summary.add_row({"MALE weight = ", to_string(g.gender_generator.gender_lib[MALE] * 1.0 / ps.size())});
+        gender_summary.add_row({"FEMALE weight = ", to_string(g.gender_generator.gender_lib[FEMALE] * 1.0 / ps.size())});
+        gender_summary.add_row({"OTHER weight = ", to_string(g.gender_generator.gender_lib[OTHER] * 1.0 / ps.size())});
+        summary.add_row({name_summary, "WARNING: INPUT DIVERSITY", gender_summary, "PASS"});
+        summary[1][0].format().color(Color::yellow); summary[1][1].format().color(Color::yellow);
+        summary[1][2].format().color(Color::green); summary[1][3].format().color(Color::green);
+        Table multiple_birth_summary;
+        multiple_birth_summary.add_row({"MULTIPLE BIRTH generator", "VALUE"});
+        for (auto& p : g.multiple_birth_generator.multiple_birth_lib)
+            multiple_birth_summary.add_row({to_string(p.first) + " children weight = ", to_string(p.second * 1.0 / ps.size())});
+        Table address_summary;
+        address_summary.add_row({"ADDRESS generator", "VALUE"});
+        for (auto& p : g.address_generator.country_lib)
+            address_summary.add_row({p.first + " weight = ", to_string(p.second * 1.0 / ps.size())});
+        summary.add_row({multiple_birth_summary, "PASS", address_summary, "WARNING: INPUT DIVERSITY"});
+        summary[2][0].format().color(Color::green);  summary[2][1].format().color(Color::green);
+        summary[2][2].format().color(Color::yellow);  summary[2][3].format().color(Color::yellow);
+        Table marital_status_summary;
+        marital_status_summary.add_row({"MARTIAL generator", "VALUE"});
+        for (auto& p : g.marital_status_generator.marital_lib)
+            marital_status_summary.add_row({p.first.encodings.front().display + " weight = ", to_string(p.second * 1.0 / ps.size())});
+        Table language_summary;
+        language_summary.add_row({"LANGUAGE generator", "VALUE"});
+        for (auto& p : g.language_generator.language_lib)
+            language_summary.add_row({p.first.encodings.front().display + " weight = ", to_string(p.second * 1.0 / ps.size())});
+        summary.add_row({marital_status_summary, "PASS", language_summary, "PASS"});
+        summary[3][0].format().color(Color::green);  summary[3][1].format().color(Color::green);
+        summary[3][2].format().color(Color::green);  summary[3][3].format().color(Color::green);
         cout << summary << endl;
     }
 
