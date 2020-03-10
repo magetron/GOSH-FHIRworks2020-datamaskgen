@@ -51,12 +51,23 @@ public:
                         "This tool is developed with performance and customisation in mind. See [TODO: UPDATES] on how to customise with custom data modules."});
         readme[2].format().font_style({FontStyle::italic}).font_color(Color::magenta);
         Table highlights;
-        highlights.add_row({"Build: passing", "C++17", "Apache-2.0 License"});
+        highlights.add_row({"build: passing", "C++17", "Apache-2.0 License"});
         readme.add_row({highlights});
         readme[3].format().font_align(FontAlign::center).hide_border_top().font_color(Color::yellow);
         cout << readme << endl;
 
-        if (cmdl[{"--about"}]) return 0;
+
+        if (cmdl["--about"]) return 0;
+        if (cmdl["--help"] || cmdl["-h"]) {
+            cout << "* --quiet for SILENT Mode" << endl;
+            cout << "* --use-cache for loading cached patients.json file at a custom location, to be used with --cache-loc" << endl;
+            cout << "* --api ${YOUR_CUSTOM_API}" << endl;
+            cout << "* --cache-loc ${CACHE_FILE_LOCATION}" << endl;
+            cout << "* -g ${NO OF PATIENTS TO BE GENERATED}" << endl;
+            cout << "* -o ${OUTPUT_FILE_LOCATION}" << endl;
+            cout << "* -h or --help for showing the help message" << endl;
+            return 0;
+        }
         if (cmdl["--use-cache"]) USE_CACHE = true;
         if (cmdl["--mask"]) MASK = true;
         if (cmdl["--quiet"]) VERBOSE = false;

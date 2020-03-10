@@ -34,6 +34,7 @@ make install
 * `--cache-loc ${CACHE_FILE_LOCATION}`
 * `-g ${NO OF PATIENTS TO BE GENERATED}`
 * `-o ${OUTPUT_FILE_LOCATION}`
+* `-h` or `--help` for showing the help message
 
 ### Sample
 
