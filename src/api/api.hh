@@ -1,8 +1,8 @@
 //
 // Created by Patrick Wu on 02/03/2020.
 //
-#ifndef GOSH_FHIRWORKS2020_DATAMASKER_API_HH
-#define GOSH_FHIRWORKS2020_DATAMASKER_API_HH
+#ifndef GOSH_FHIRWORKS2020_DATAMASKGEN_API_HH
+#define GOSH_FHIRWORKS2020_DATAMASKGEN_API_HH
 
 #include <iostream>
 #include <fstream>

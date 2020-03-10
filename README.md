@@ -1,4 +1,4 @@
-# GOSH FHIRworks 2020 Data Masker - Generator [![Build Status](https://travis-ci.com/magetron/GOSH-FHIRworks2020-datamasker.svg?token=1egyyzxUBmAzQpnmo8g4&branch=master)](https://travis-ci.com/magetron/GOSH-FHIRworks2020-datamasker)
+# GOSH FHIRworks 2020 Data MaskGen [![Build Status](https://travis-ci.com/magetron/GOSH-FHIRworks2020-datamaskgen.svg?token=1egyyzxUBmAzQpnmo8g4&branch=master)](https://travis-ci.com/magetron/GOSH-FHIRworks2020-datamaskgen)
 
 ## Introduction
 
@@ -38,7 +38,7 @@ make install
 ### Sample
 
 ```shell script
-./GOSH_FHIRworks2020_datamasker --api https://localhost:5001/api/Patient -g 100 -o ./
+./GOSH_FHIRworks2020_datamaskgen --api https://localhost:5001/api/Patient -g 100 -o ./
 ```
 
 ## Customisation
@@ -49,3 +49,14 @@ Your customised class will be required to feed in a `const` reference to origina
 
 Specify your output of custom data set in `jsonify()` function in `src/patient/patient.hh`, and sit back to see the new data getting generated.
 
+## Performance
+
+Build with performance in mind, `Data Masker`
+
+|  	    | Data Masker / Gen | Synthea 	        |
+|------	|-----------------	|------------------	|
+| 1 	| 98% cpu, 1.836s 	| 10% cpu, 13.067s 	|
+| 50 	| 99% cpu, 1.863s 	| 9% cpu, 15.817s 	|
+| 100 	| 99% cpu, 1.917s 	| 6% cpu, 23.035s 	|
+| 500 	| 99% cpu, 2.258s 	| 5% cpu, 30.726s 	|
+| 1000 	| 99% cpu, 2.601s 	| 4% cpu, 41.757s 	|

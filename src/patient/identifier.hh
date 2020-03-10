@@ -2,8 +2,8 @@
 // Created by Patrick Wu on 03/03/2020.
 //
 
-#ifndef GOSH_FHIRWORKS2020_DATAMASKER_IDENTIFIER_HH
-#define GOSH_FHIRWORKS2020_DATAMASKER_IDENTIFIER_HH
+#ifndef GOSH_FHIRWORKS2020_DATAMASKGEN_IDENTIFIER_HH
+#define GOSH_FHIRWORKS2020_DATAMASKGEN_IDENTIFIER_HH
 
 #include <string>
 #include <optional>
@@ -26,7 +26,7 @@ public:
 
     identifier (string sys, string val) : system(std::move(sys)), value(std::move(val)) {
         if (system == "https://github.com/synthetichealth/synthea") {
-            system = "https://github.com/magetron/GOSH-FHIRworks2020-datamasker";
+            system = "https://github.com/magetron/GOSH-FHIRworks2020-datamaskgen";
             value = "";
         }
     }
@@ -65,4 +65,4 @@ namespace std {
 }
 
 
-#endif //GOSH_FHIRWORKS2020_DATAMASKER_IDENTIFIER_HH
+#endif //GOSH_FHIRWORKS2020_DATAMASKGEN_IDENTIFIER_HH

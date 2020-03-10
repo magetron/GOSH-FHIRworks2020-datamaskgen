@@ -2,8 +2,8 @@
 // Created by Patrick Wu on 02/03/2020.
 //
 
-#ifndef GOSH_FHIRWORKS2020_DATAMASKER_NAME_CC
-#define GOSH_FHIRWORKS2020_DATAMASKER_NAME_CC
+#ifndef GOSH_FHIRWORKS2020_DATAMASKGEN_NAME_CC
+#define GOSH_FHIRWORKS2020_DATAMASKGEN_NAME_CC
 
 #include <string>
 #include <sstream>
@@ -52,4 +52,4 @@ public:
     ~name () = default;
 };
 
-#endif //GOSH_FHIRWORKS2020_DATAMASKER_NAME_CC
+#endif //GOSH_FHIRWORKS2020_DATAMASKGEN_NAME_CC

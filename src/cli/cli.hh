@@ -2,8 +2,8 @@
 // Created by Patrick Wu on 08/03/2020.
 //
 
-#ifndef GOSH_FHIRWORKS2020_DATAMASKER_CLI_HH
-#define GOSH_FHIRWORKS2020_DATAMASKER_CLI_HH
+#ifndef GOSH_FHIRWORKS2020_DATAMASKGEN_CLI_HH
+#define GOSH_FHIRWORKS2020_DATAMASKGEN_CLI_HH
 
 #include <iostream>
 #include <sstream>
@@ -41,7 +41,7 @@ public:
         readme.format().border_color(Color::white);
         readme.add_row({"GOSH FHIRworks 2020 Data Masker - Generator"});
         readme[0].format().font_align(FontAlign::center).font_color(Color::blue);
-        readme.add_row({"https://github.com/magetron/GOSH-FHIRworks2020-datamasker"});
+        readme.add_row({"https://github.com/magetron/GOSH-FHIRworks2020-datamaskgen"});
         readme[1].format()
                 .font_align(FontAlign::center)
                 .font_style({FontStyle::underline, FontStyle::italic})
@@ -159,4 +159,4 @@ public:
     }
 };
 
-#endif //GOSH_FHIRWORKS2020_DATAMASKER_CLI_HH
+#endif //GOSH_FHIRWORKS2020_DATAMASKGEN_CLI_HH
