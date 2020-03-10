@@ -4,6 +4,11 @@
 ![C++](https://img.shields.io/badge/C%2B%2B-1z-red)
 ![License](https://img.shields.io/badge/license-Apache--2.0-blue)
 
+## Screenshot
+
+![Screenshot](https://raw.githubusercontent.com/magetron/GOSH-FHIRworks2020-datamaskgen/master/README.png)
+
+
 ## Introduction
 
 A data synthesizer and masker that takes in real FHIR patient data and generate data providing certain rules.
