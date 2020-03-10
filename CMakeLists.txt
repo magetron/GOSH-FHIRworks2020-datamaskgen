@@ -30,3 +30,7 @@ enable_testing()
 include(CTest)
 set(PARSE_CATCH_TESTS_NO_HIDDEN_TESTS ON)
 ParseAndAddCatchTests(GOSH_FHIRworks2020_datamasker_test)
+
+install(TARGETS GOSH_FHIRworks2020_datamasker
+        CONFIGURATIONS Release
+        RUNTIME DESTINATION /usr/local/bin)
