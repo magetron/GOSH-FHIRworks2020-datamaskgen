@@ -4,7 +4,7 @@
 
 A data synthesizer and masker that takes in real FHIR patient data and generate data providing certain rules.
 
-This tool is developed with performance and customisation in mind. See [TODO: UPDATES] on how to customise with custom data modules.
+This tool is developed with performance and customisation in mind. See below on how to customise with custom data modules.
 
 ## Installation
 
@@ -20,7 +20,7 @@ To compile and Use under current folder.
 make
 ```
 
-Or to install in system,
+Or to install in system **(POSIX system only)**,
 
 ```shell script
 make install
@@ -37,8 +37,15 @@ make install
 
 ### Sample
 
-Note: Create your own output directory before writing output files.
-
 ```shell script
-./GOSH_FHIRworks2020_datamasker -v --api https://localhost:5001/api/Patient -g 100 -o ./output/
+./GOSH_FHIRworks2020_datamasker --api https://localhost:5001/api/Patient -g 100 -o ./
 ```
+
+## Customisation
+
+Customise any of the `generator` in the `src/generator` folder, or add your own  class with suffix `_generator`.
+
+Your customised class will be required to feed in a `const` reference to original patients list `vector`, and then generate required information based own your customised algorithm.
+
+Specify your output of custom data set in `jsonify()` function in `src/patient/patient.hh`, and sit back to see the new data getting generated.
+
