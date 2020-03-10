@@ -1,4 +1,5 @@
 language: cpp
+sudo: required
 matrix:
   include:
     - os: linux
@@ -23,6 +24,6 @@ script:
   - cmake ..
   - make
   - make test
-  - make install
+  - sudo make install
   - GOSH_FHIRworks2020_datamasker --mask --api=https://gist.githubusercontent.com/magetron/cf8e0de347e333c67f8e66c13572b111/raw/7046cca2915f6e9b68bed9c409e6e02a6cc5709e/patients.json
 
