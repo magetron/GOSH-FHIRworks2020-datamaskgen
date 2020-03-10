@@ -1,8 +1,8 @@
 # GOSH FHIRworks 2020 Data MaskGen 
 
 [![Build Status](https://travis-ci.com/magetron/GOSH-FHIRworks2020-datamaskgen.svg?token=1egyyzxUBmAzQpnmo8g4&branch=master)](https://travis-ci.com/magetron/GOSH-FHIRworks2020-datamaskgen)
-[C++](https://img.shields.io/badge/C%2B%2B-1z-red)
-[License](https://img.shields.io/badge/license-Apache--2.0-blue)
+![C++](https://img.shields.io/badge/C%2B%2B-1z-red)
+![License](https://img.shields.io/badge/license-Apache--2.0-blue)
 
 ## Screenshot
 
