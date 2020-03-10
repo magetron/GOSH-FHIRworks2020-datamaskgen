@@ -51,9 +51,9 @@ Specify your output of custom data set in `jsonify()` function in `src/patient/p
 
 ## Performance
 
-Build with performance in mind, `Data Masker`
+Build with performance in mind, `Data MaskGen` utilises system resources much better than the industrial standard `synthea` and therefore archives much better running time with similar results.
 
-|  	    | Data Masker / Gen | Synthea 	        |
+| Patient Amount | Data MaskGen | Synthea  |
 |------	|-----------------	|------------------	|
 | 1 	| 98% cpu, 1.836s 	| 10% cpu, 13.067s 	|
 | 50 	| 99% cpu, 1.863s 	| 9% cpu, 15.817s 	|
