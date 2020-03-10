@@ -4,11 +4,12 @@
 #ifndef GOSH_FHIRWORKS2020_DATAMASKER_API_HH
 #define GOSH_FHIRWORKS2020_DATAMASKER_API_HH
 
-#include <cpr/cpr.h>
 #include <iostream>
 #include <fstream>
+#include <filesystem>
 #include <unordered_set>
 #include <nlohmann/json.hpp>
+#include <cpr/cpr.h>
 
 #include "../patient/patient.hh"
 
