@@ -18,7 +18,7 @@ cd build
 cmake ..
 ```
 
-To compile and Use under current folder.
+To compile and use under current folder.
 
 ```shell script
 make
