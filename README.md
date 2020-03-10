@@ -28,7 +28,7 @@ make install
 
 ## Usage
 
-* `-v` for `VERBOSE` Mode
+* `--quiet` for `SILENT` Mode
 * `--use-cache` for loading cached `patients.json` file at a custom location, to be used with `--cache-loc`
 * `--api ${YOUR_CUSTOM_API}`
 * `--cache-loc ${CACHE_FILE_LOCATION}`

@@ -8,7 +8,7 @@ set(OPENSSL_LIBRARIES /usr/local/ssl/lib)
 add_subdirectory(dependencies)
 add_subdirectory(src)
 
-include_directories(${CPR_INCLUDE_DIRS} ${JSON_INCLUDE_DIRS} ${CATCH2_INCLUDE_DIRS} ${SOURCE_DIRS})
+include_directories(${CPR_INCLUDE_DIRS} ${JSON_INCLUDE_DIRS} ${CATCH2_INCLUDE_DIRS} ${TABULATE_INCLUDE_DIRS} ${SOURCE_DIRS})
 
 add_executable(GOSH_FHIRworks2020_datamasker src/main.cc src/api/api.hh src/config/config.hh
         src/patient/patient.hh src/patient/name.hh src/patient/address.hh src/patient/geolocation.hh
@@ -30,3 +30,7 @@ enable_testing()
 include(CTest)
 set(PARSE_CATCH_TESTS_NO_HIDDEN_TESTS ON)
 ParseAndAddCatchTests(GOSH_FHIRworks2020_datamasker_test)
+
+install(TARGETS GOSH_FHIRworks2020_datamasker
+        CONFIGURATIONS Release
+        RUNTIME DESTINATION /usr/local/bin)
