@@ -37,6 +37,8 @@ make install
 
 ## Usage
 
+Note : To be used with Patients API endpoints, official version from [GOSH](https://github.com/goshdrive/FHIRworks_2020), or unofficial ones here from [@henryz00](https://henryz.cc:5001/api/), or simply a [gist - Github](https://gist.githubusercontent.com/magetron/cf8e0de347e333c67f8e66c13572b111/raw/7046cca2915f6e9b68bed9c409e6e02a6cc5709e/patients.json), whichever you chose, please specify when calling the application.
+
 * `--quiet` for `SILENT` Mode
 * `--use-cache` for loading cached `patients.json` file at a custom location, to be used with `--cache-loc`
 * `--api ${YOUR_CUSTOM_API}`
