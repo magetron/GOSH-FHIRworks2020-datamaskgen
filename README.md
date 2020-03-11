@@ -53,14 +53,6 @@ Note : To be used with Patients API endpoints, official version from [GOSH](http
 ./GOSH_FHIRworks2020_datamaskgen --api https://localhost:5001/api/Patient -g 100 -o ./
 ```
 
-## Customisation
-
-Customise any of the `generator` in the `src/generator` folder, or add your own  class with suffix `_generator`.
-
-Your customised class will be required to feed in a `const` reference to original patients list `vector`, and then generate required information based own your customised algorithm.
-
-Specify your output of custom data set in `jsonify()` function in `src/patient/patient.hh`, and sit back to see the new data getting generated.
-
 ## Performance
 
 Build with performance in mind, `Data MaskGen` utilises system resources much better than the industrial standard `synthea` and therefore archives much better running time with similar results.
@@ -72,3 +64,13 @@ Build with performance in mind, `Data MaskGen` utilises system resources much be
 | 100 	| 99% cpu, 1.917s 	| 6% cpu, 23.035s 	|
 | 500 	| 99% cpu, 2.258s 	| 5% cpu, 30.726s 	|
 | 1000 	| 99% cpu, 2.601s 	| 4% cpu, 41.757s 	|
+
+## Customisation
+
+Customise any of the `generator` in the `src/generator` folder, or add your own  class with suffix `_generator`.
+
+Your customised class will be required to feed in a `const` reference to original patients list `vector`, and then generate required information based own your customised algorithm.
+
+Specify your output of custom data set in `jsonify()` function in `src/patient/patient.hh`, and sit back to see the new data getting generated.
+
+
